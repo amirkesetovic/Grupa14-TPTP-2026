@@ -1,2 +1,12 @@
 # Grupa14-TPTP-2026
-Zavrsni projekat iz predmeta TPTP Fakulteta elektrotehnike u Tuzli. Grupa 14.
+Završni projekat iz predmeta TPTP Fakulteta elektrotehnike u Tuzli.
+Naziv projekta:
+Tema:
+
+Članovi grupe:
+
+Bulić Zara     - 25xxx - github username - HTML
+Kavazović Amir - 25xxx - github username - CSS
+Kešetović Amir - 25006 - amirkesetovic   - JS
+
+Kratak opis projekta:
