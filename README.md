@@ -6,7 +6,9 @@ Tema:
 Članovi grupe:
 
 Bulić Zara     - 25xxx - github username - HTML
+
 Kavazović Amir - 25xxx - github username - CSS
+
 Kešetović Amir - 25006 - amirkesetovic   - JS
 
 Kratak opis projekta:
