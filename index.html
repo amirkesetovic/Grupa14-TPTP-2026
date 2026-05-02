@@ -2,16 +2,132 @@
 <html lang="bs">
 <head>
     <meta charset="UTF-8">
-    <title>NASLOV</title>
-    <link rel="stylesheet" href="/css/tptpstil.css">
-    <script src="/js/tptpskripte.js"></script>
+     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>CineGuide-Recenzije filmova</title>
+  <link rel="stylesheet" href="css/tptpstil.css">
+ <script src="js/tptpskripte.js" defer></script>
 </head>
+    
 <body>
     <header>
+        <div class="header-container">
         <div class="logo">
-            <img src="/images/placeholder.png" alt="Logo" class="logo">
-            <h1>Naziv stranice</h1>
+            <img src="images/placeholder.png" alt="Logo">
+            <h1>CineGuide</h1>
+            
+        </div>
+        <nav>
+        <ul>
+             <li><a href="index.html">Početna</a></li>
+             <li><a href="kontakt.html">Kontakt</a></li>
+             <li><a href="sadrzaj.html">Sadržaj</a></li>
+             <li><a href="#">GitHub</a></li>
+        </ul>
+        </nav>
         </div>
     </header>
+    
+        <nav class="sidebar">
+   <ul>
+   
+    <li><a href="#" data-filter="akcija">Akcija</a></li>
+    <li><a href="#" data-filter="komedija">Komedija</a></li>
+    <li><a href="#" data-filter="romanticni">Romantični</a></li>
+    <li><a href="#" data-filter="drama">Drama</a></li>
+    <li><a href="#" data-filter="triler">Triler</a></li>
+    <li><a href="#" data-filter="horor">Horor</a></li>
+    <li><a href="#" data-filter="sci-fi">Sci-Fi</a></li>
+</ul>
+</nav>
+    
+    <main>
+ <article class="card" data-category="akcija">
+        <img src="images/film1.jpg" alt="Akcioni film">
+        <h3>Akcioni Heroj</h3>
+        <p>Uzbudljiv akcioni film pun adrenalina.</p>
+        <p><strong>Ocjena:</strong>...</p>
+        <p><strong>Naše mišljenje:</strong>...</p>
+        <a href="sadrzaj.html">Detalji</a>
+    </article>
+
+        <article class="card" data-category="komedija">
+        <img src="images/film2.jpg" alt="Komedija film">
+        <h3>Smiješna priča</h3>
+        <p>Film koji garantuje smijeh.</p>
+        <p><strong>Ocjena:</strong>...</p>
+<p><strong>Naše mišljenje:</strong> ...</p>
+        <a href="sadrzaj.html">Detalji</a>
+    </article>
+        
+        <article class="card" data-category="drama">
+        <img src="images/film3.jpg" alt="Drama film">
+        <h3>Teška odluka</h3>
+        <p>Emotivna i ozbiljna životna priča.</p>
+       <p><strong>Ocjena:</strong>...</p>
+<p><strong>Naše mišljenje:</strong>...</p>
+        <a href="sadrzaj.html">Detalji</a>
+    </article>
+
+        <article class="card" data-category="horor">
+        <img src="images/film4.jpg" alt="Horor film">
+        <h3>Noć straha</h3>
+        <p>Film koji će vas držati budnim noću.</p>
+        <p><strong>Ocjena:</strong>...</p>
+        <p><strong>Naše mišljenje:</strong> ...</p>
+        <a href="sadrzaj.html">Detalji</a>
+    </article>
+
+        <article class="card" data-category="sci-fi">
+    <img src="images/film5.jpg" alt="Sci-Fi film">
+    <h3>Putovanje kroz svemir</h3>
+    <p>Naučno-fantastična priča o istraživanju galaksije.</p>
+    <p><strong>Ocjena:</strong>...</p>
+   <p><strong>Naše mišljenje:</strong> ...</p>
+    <a href="sadrzaj.html">Detalji</a>
+</article>
+
+         <article class="card" data-category="romanticni">
+    <img src="images/film6.jpg" alt="Romantični film">
+    <h3>Ljubavna priča</h3>
+    <p>Dirljiva priča o ljubavi i sudbini.</p>
+    <p><strong>Ocjena:</strong>5/5</p>
+    <p><strong>Naše mišljenje:</strong> ...</p>
+    <a href="sadrzaj.html">Detalji</a>
+</article>
+
+        <article class="card" data-category="triler">
+    <img src="images/film7.jpg" alt="Triler film">
+    <h3>Mračna tajna</h3>
+    <p>Napet triler pun obrta i neizvjesnosti.</p>
+    <p><strong>Ocjena:</strong>4/5</p>
+<p><strong>Naše mišljenje:</strong>...</p>
+    <a href="sadrzaj.html">Detalji</a>
+</article>
+
+    </main>
+
+    <aside>
+        <h2>Trailer sedmice</h2>
+<iframe width="300" height="200"
+src="https://www.youtube.com/embed/PMd1at7OwiE"
+title="Youtube najava filma"
+loading="lazy"
+allowfullscreen></iframe>
+
+<p>Najnoviji trailer popularnog filma.</p>
+    </aside>
+    
+<footer>
+     <p>&copy; 2026 CineGuide</p>
+
+    <p>Autori: Zara Bulić, Amir Kešetović, Amir Kavazović</p>
+    
+    <p>Linkovi vezani za filmove:</p>
+    
+    <a href="https://www.cinestarcinemas.ba" target="_blank">Cinestar</a> |
+    <a href="https://www.imdb.com" target="_blank">IMDB</a> |
+    <a href="https://letterboxd.com" target="_blank">Letterboxd</a> 
+</footer>
+    
 </body>
 </html>
