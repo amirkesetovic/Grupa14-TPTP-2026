@@ -5,7 +5,7 @@ Tema:
 
 Članovi grupe:
 
-Bulić Zara     - 25xxx - zarabulic - HTML
+Bulić Zara     - 25134 - zarabulic - HTML
 
 Kavazović Amir - 25xxx - github username - CSS
 
