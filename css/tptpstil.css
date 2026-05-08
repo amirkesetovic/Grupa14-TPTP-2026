@@ -113,6 +113,83 @@ header nav ul li a:hover {
     color: var(--primary);
     padding-left: 15px;
 }
+/* Sakrij checkbox */
+.mode-checkbox {
+    display: none;
+}
+
+/* Kontejner koji drži ikonu i slide button */
+.slide-kontejner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    background: var(--glass);
+    border-radius: 50px; /* Zaobljeno kao pilula */
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+/* Ikonica sunca */
+.mode-ikona {
+    width: 22px;
+    height: 22px;
+    filter: invert(1); /* Bijela u dark modu */
+    transition: 0.3s;
+}
+
+/* Putanja po kojoj klizi kruzic */
+.slide-putanja {
+    width: 50px;
+    height: 24px;
+    background: #333;
+    border-radius: 20px;
+    position: relative;
+    transition: 0.4s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Kruzic koji zapravo klizi (Slide efekat) */
+.slide-kruzic {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* "Spring" efekat */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* --- AKTIVNO STANJE (Kada se klikne / SLIDE) --- */
+
+/* 1. Pomjeri kruzic udesno */
+#mode-toggle:checked + .slide-kontejner .slide-kruzic {
+    left: 27px;
+    background: #fff;
+}
+
+/* 2. Promijeni boju putanje u crvenu (tvoja primarna boja) */
+#mode-toggle:checked + .slide-kontejner .slide-putanja {
+    background: var(--primary);
+}
+
+/* 3. Vrati ikonu u crnu boju za light mode */
+#mode-toggle:checked + .slide-kontejner .mode-ikona {
+    filter: invert(0);
+}
+
+/* 4. PROMJENA BOJA STRANICE (Light Mode) */
+:root:has(#mode-toggle:checked) {
+    --bg-body: #f5f5f5;
+    --bg-card: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --glass: rgba(0, 0, 0, 0.07);
+}
 
 /* --- SREDINA - MREŽA FILMOVA --- */
 .sadrzaj-filmova {
@@ -238,6 +315,51 @@ footer {
 }
 
 .logo-slika {
-    max-height: 40px; /* Prilagodite visinu logotipa da stane u header */
+    max-height: 60px; /* Prilagodite visinu logotipa da stane u header */
     width: auto;      /* Automatska širina radi očuvanja proporcija */
+}
+
+/* Definicija varijabli (prema tvojim pravilima) */
+
+
+.video-kontejner {
+    position: relative;
+    width: 100%;
+    height: var(--video-visina);
+    overflow: hidden;
+    /* Flexbox za centriranje teksta preko videa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pozadinski-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Video ide u pozadinu */
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Osigurava da video popuni prostor bez razvlačenja */
+}
+
+/* Stil za logo koji ide preko videa */
+.logo-video {
+    width: 50px;         /* Možeš promijeniti na 150px ili 250px po želji */
+    height: auto;          /* Održava proporcije da se logo ne iskrivi */
+    margin-bottom: 15px;   /* Razmak između loga i naslova ispod */
+    display: block;        /* Da bi margin: auto radila centriranje */
+    margin-left: auto;
+    margin-right: auto;
+    /* Dodatni efekt: malo sjene da logo bolje "iskoči" sa videa */
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.5));
+}
+
+/* Osiguraj da kontejner preko videa ne bude preširok na desktopu */
+.sadrzaj-preko-videa {
+    max-width: 80%;       /* Da ne ide od ruba do ruba */
+    z-index: 10;          /* Mora biti veći od videa (-1) */
 }
