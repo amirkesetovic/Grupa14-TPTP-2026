@@ -1,4 +1,4 @@
-/* CineGuide - Finalna Verzija sa svim dodacima */
+/* CineGuide - Finalna Verzija*/
 
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
@@ -14,8 +14,7 @@
     --sidebar-width: 200px;
     --aside-width: 320px;
 }
-
-* {
+ {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -113,82 +112,84 @@ header nav ul li a:hover {
     color: var(--primary);
     padding-left: 15px;
 }
-/* Sakrij checkbox */
+/* --- DARK/LIGHT MODE--- */
+
 .mode-checkbox {
     display: none;
 }
 
-/* Kontejner koji drži ikonu i slide button */
 .slide-kontejner {
     display: flex;
     align-items: center;
     gap: 15px;
     padding: 10px 15px;
     background: var(--glass);
-    border-radius: 50px; /* Zaobljeno kao pilula */
+    border-radius: 50px;
     cursor: pointer;
     width: fit-content;
-    transition: 0.3s;
-    margin-bottom: 20px;
-}
-
-/* Ikonica sunca */
-.mode-ikona {
-    width: 22px;
-    height: 22px;
-    filter: invert(1); /* Bijela u dark modu */
+    margin-bottom: 25px;
     transition: 0.3s;
 }
 
-/* Putanja po kojoj klizi kruzic */
-.slide-putanja {
-    width: 50px;
-    height: 24px;
-    background: #333;
-    border-radius: 20px;
+.ikona-omotac {
     position: relative;
-    transition: 0.4s;
-    border: 1px solid rgba(255,255,255,0.1);
+    width: 28px;
+    height: 28px;
 }
 
-/* Kruzic koji zapravo klizi (Slide efekat) */
-.slide-kruzic {
-    width: 18px;
-    height: 18px;
-    background: white;
-    border-radius: 50%;
+.ikona-sunce, .ikona-mesec {
+    width: 100%;
+    height: auto;
     position: absolute;
-    top: 2px;
-    left: 3px;
-    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* "Spring" efekat */
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    top: 0;
+    left: 0;
+    transition: 0.4s ease;
 }
 
-/* --- AKTIVNO STANJE (Kada se klikne / SLIDE) --- */
+/* POČETNO STANJE - DARK MODE */
+.ikona-sunce {
+    opacity: 1;
+    transform: scale(1);
+    filter: invert(1); /* Sunce je bijelo u mraku */
+}
 
-/* 1. Pomjeri kruzic udesno */
+.ikona-mesec {
+    opacity: 0;
+    transform: scale(0);
+    /* DODAJEMO BIJELI SJAJ OKO MJESECA */
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); 
+}
+
+/* --- KADA SE KLIKNE (LIGHT MODE) --- */
+
+/* Mjesec postaje vidljiv sa sjajem */
+#mode-toggle:checked + .slide-kontejner .ikona-mesec {
+    opacity: 1;
+    transform: scale(1);
+    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2)); /* Na svijetloj pozadini sjena je tamna */
+}
+
+#mode-toggle:checked + .slide-kontejner .ikona-sunce {
+    opacity: 0;
+    transform: scale(0);
+}
+
+/* Pomjeranje slide dugmeta */
 #mode-toggle:checked + .slide-kontejner .slide-kruzic {
     left: 27px;
-    background: #fff;
 }
 
-/* 2. Promijeni boju putanje u crvenu (tvoja primarna boja) */
 #mode-toggle:checked + .slide-kontejner .slide-putanja {
     background: var(--primary);
 }
 
-/* 3. Vrati ikonu u crnu boju za light mode */
-#mode-toggle:checked + .slide-kontejner .mode-ikona {
-    filter: invert(0);
-}
-
-/* 4. PROMJENA BOJA STRANICE (Light Mode) */
+/* Globalna promjena varijabli stranice */
 :root:has(#mode-toggle:checked) {
     --bg-body: #f5f5f5;
     --bg-card: #ffffff;
     --text-main: #1a1a1a;
     --text-muted: #555555;
-    --glass: rgba(0, 0, 0, 0.07);
+    --glass: rgba(0, 0, 0, 0.1);
 }
 
 /* --- SREDINA - MREŽA FILMOVA --- */
