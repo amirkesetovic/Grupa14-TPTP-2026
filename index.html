@@ -11,7 +11,6 @@
     <header>
         <div class="logo">
             <img src="images/placeholder.png" alt="CineGuide Logo" class="logo-slika">
-            <h1 style="color: #e50914; font-size: 24px;">CineGuide</h1>
         </div>
         <nav>
             <ul>
@@ -22,21 +21,33 @@
             </ul>
         </nav>
     </header>
-
     <div class="glavni-kontejner">
         
-        <aside class="lijevi-sidebar">
-            <h3>Kategorije</h3>
-            <ul>
-                <li><a href="#">Akcija</a></li>
-                <li><a href="#">Komedija</a></li>
-                <li><a href="#">Drama</a></li>
-                <li><a href="#">Horor</a></li>
-                <li><a href="#">Sci-Fi</a></li>
-                <li><a href="#">Romantični</a></li>
-                <li><a href="#">Triler</a></li>
-            </ul>
-        </aside>
+<aside class="lijevi-sidebar">
+    <input type="checkbox" id="mode-toggle" class="mode-checkbox">
+
+    <label for="mode-toggle" class="slide-kontejner">
+        <div class="ikona-omotac">
+            <img src="images/lightmode.png" alt="Light" class="ikona-sunce">
+            <img src="images/darkmode.png" alt="Dark" class="ikona-mesec">
+        </div>
+        
+        <div class="slide-putanja">
+            <div class="slide-kruzic"></div>
+        </div>
+    </label>
+
+    <h3>Kategorije</h3>
+    <ul>
+        <li><a href="#">Akcija</a></li>
+        <li><a href="#">Komedija</a></li>
+        <li><a href="#">Drama</a></li>
+        <li><a href="#">Horor</a></li>
+        <li><a href="#">Sci-Fi</a></li>
+        <li><a href="#">Romantični</a></li>
+        <li><a href="#">Triler</a></li>
+    </ul>
+</aside>
 
         <main class="sadrzaj-filmova">
             
@@ -122,8 +133,16 @@
         <aside class="desni-sidebar">
             <h3 style="color: #e50914; margin-bottom: 15px;">Trailer sedmice</h3>
             <div class="video-okvir">
+                <section class="video-kontejner">
+    <video autoplay loop muted playsinline class="pozadinski-video">
+        <source src="images/tvoj-video.mp4" type="video/mp4">
+        Vaš pretraživač ne podržava video tag.
+    </video>
+    <div class="sadrzaj-preko-videa">
+    </div>
+    </section>
                 <video autoplay muted loop playsinline poster="images/video-placeholder.jpg" class="lokalni-video">
-                    <source src="videos/trailer.mp4" type="video/mp4">
+                    <source src="images/tvoj-video.mp4" type="video/mp4">
                 </video>
             </div>
             <p style="margin-top: 10px; font-size: 0.9rem; color: #a0a0a0;">Najnoviji trailer za hit godine.</p>
