@@ -1,0 +1,365 @@
+/* CineGuide - Finalna Verzija sa svim dodacima */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    --primary: #e50914;
+    --bg-body: #0a0a0a;
+    --bg-card: #1a1a1a;
+    --text-main: #ffffff;
+    --text-muted: #a0a0a0;
+    --gold: #ffc107;
+    --glass: rgba(255, 255, 255, 0.05);
+    --header-height: 80px;
+    --sidebar-width: 200px;
+    --aside-width: 320px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+}
+
+/* --- HEADER --- */
+header {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    height: var(--header-height);
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    border-bottom: 1px solid var(--glass);
+    z-index: 1000;
+}
+
+header h1 {
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover {
+    color: var(--primary);
+}
+
+/* --- GLAVNI KONTEJNER (GRID) --- */
+.glavni-kontejner {
+    display: grid;
+    grid-template-columns: var(--sidebar-width) 1fr var(--aside-width);
+    margin-top: var(--header-height);
+    min-height: calc(100vh - var(--header-height));
+}
+
+/* --- LIJEVI SIDEBAR --- */
+.lijevi-sidebar {
+    background: #0f0f0f;
+    padding: 30px 20px;
+    border-right: 1px solid var(--glass);
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+}
+
+.lijevi-sidebar h3 {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: var(--text-muted);
+}
+
+.lijevi-sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.lijevi-sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.lijevi-sidebar ul li a:hover {
+    background: var(--glass);
+    color: var(--primary);
+    padding-left: 15px;
+}
+/* Sakrij checkbox */
+.mode-checkbox {
+    display: none;
+}
+
+/* Kontejner koji drži ikonu i slide button */
+.slide-kontejner {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 15px;
+    background: var(--glass);
+    border-radius: 50px; /* Zaobljeno kao pilula */
+    cursor: pointer;
+    width: fit-content;
+    transition: 0.3s;
+    margin-bottom: 20px;
+}
+
+/* Ikonica sunca */
+.mode-ikona {
+    width: 22px;
+    height: 22px;
+    filter: invert(1); /* Bijela u dark modu */
+    transition: 0.3s;
+}
+
+/* Putanja po kojoj klizi kruzic */
+.slide-putanja {
+    width: 50px;
+    height: 24px;
+    background: #333;
+    border-radius: 20px;
+    position: relative;
+    transition: 0.4s;
+    border: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Kruzic koji zapravo klizi (Slide efekat) */
+.slide-kruzic {
+    width: 18px;
+    height: 18px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 3px;
+    transition: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* "Spring" efekat */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* --- AKTIVNO STANJE (Kada se klikne / SLIDE) --- */
+
+/* 1. Pomjeri kruzic udesno */
+#mode-toggle:checked + .slide-kontejner .slide-kruzic {
+    left: 27px;
+    background: #fff;
+}
+
+/* 2. Promijeni boju putanje u crvenu (tvoja primarna boja) */
+#mode-toggle:checked + .slide-kontejner .slide-putanja {
+    background: var(--primary);
+}
+
+/* 3. Vrati ikonu u crnu boju za light mode */
+#mode-toggle:checked + .slide-kontejner .mode-ikona {
+    filter: invert(0);
+}
+
+/* 4. PROMJENA BOJA STRANICE (Light Mode) */
+:root:has(#mode-toggle:checked) {
+    --bg-body: #f5f5f5;
+    --bg-card: #ffffff;
+    --text-main: #1a1a1a;
+    --text-muted: #555555;
+    --glass: rgba(0, 0, 0, 0.07);
+}
+
+/* --- SREDINA - MREŽA FILMOVA --- */
+.sadrzaj-filmova {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.film-kartica {
+    background: var(--bg-card);
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid var(--glass);
+    transition: 0.4s;
+    display: flex;
+    flex-direction: column;
+}
+
+.film-kartica:hover {
+    transform: translateY(-10px);
+    border-color: var(--primary);
+}
+
+.film-kartica img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    display: block;
+}
+
+.film-kartica .info {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.film-kartica h3 {
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.film-kartica p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* --- ZVJEZDICE I BROJČANA OCJENA --- */
+.rating {
+    margin-top: 10px;
+}
+
+.stars {
+    color: var(--gold);
+    letter-spacing: 1px;
+}
+
+.ocjena-broj {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    margin-left: 5px;
+}
+
+/* --- NAŠE MIŠLJENJE I TIPKA --- */
+.misljenje {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.detalji-btn {
+    display: block;
+    background-color: var(--primary);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 8px;
+    margin-top: auto; /* Gura tipku na dno kartice */
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.detalji-btn:hover {
+    background-color: #b20710;
+}
+
+/* --- DESNI SIDEBAR (VIDEO) --- */
+.desni-sidebar {
+    padding: 30px 20px;
+    background: #0f0f0f;
+    border-left: 1px solid var(--glass);
+}
+
+.video-okvir {
+    width: 100%;
+    height: 450px; /* Fiksna visina za stabilan prikaz */
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid var(--primary);
+    position: relative;
+}
+
+.lokalni-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- FOOTER --- */
+footer {
+    text-align: center;
+    padding: 40px;
+    background: #000;
+    border-top: 1px solid var(--glass);
+}
+/* Stilovi za logo u headeru */
+.logo {
+    display: flex;
+    align-items: center; /* Centriranje slike vertikalno */
+}
+
+.logo-slika {
+    max-height: 60px; /* Prilagodite visinu logotipa da stane u header */
+    width: auto;      /* Automatska širina radi očuvanja proporcija */
+}
+
+/* Definicija varijabli (prema tvojim pravilima) */
+
+
+.video-kontejner {
+    position: relative;
+    width: 100%;
+    height: var(--video-visina);
+    overflow: hidden;
+    /* Flexbox za centriranje teksta preko videa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pozadinski-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1; /* Video ide u pozadinu */
+    transform: translate(-50%, -50%);
+    object-fit: cover; /* Osigurava da video popuni prostor bez razvlačenja */
+}
+
+/* Stil za logo koji ide preko videa */
+.logo-video {
+    width: 50px;         /* Možeš promijeniti na 150px ili 250px po želji */
+    height: auto;          /* Održava proporcije da se logo ne iskrivi */
+    margin-bottom: 15px;   /* Razmak između loga i naslova ispod */
+    display: block;        /* Da bi margin: auto radila centriranje */
+    margin-left: auto;
+    margin-right: auto;
+    /* Dodatni efekt: malo sjene da logo bolje "iskoči" sa videa */
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.5));
+}
+
+/* Osiguraj da kontejner preko videa ne bude preširok na desktopu */
+.sadrzaj-preko-videa {
+    max-width: 80%;       /* Da ne ide od ruba do ruba */
+    z-index: 10;          /* Mora biti veći od videa (-1) */
+}
