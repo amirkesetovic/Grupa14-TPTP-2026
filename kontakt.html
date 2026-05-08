@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CineGuide - Kontakt</title>
+    <link rel="stylesheet" href="css/tptpstil.css">
+    <script src="js/tptpskripte.js" defer></script>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">
+            <img src="images/placeholder.png" alt="CineGuide Logo" class="logo-slika">
+        </div>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Početna</a></li>
+                <li><a href="kontakt.html">Kontakt</a></li>
+                <li><a href="sadrzaj.html">Sadržaj</a></li>
+                <li><a href="https://github.com/amirkesetovic/Grupa14-TPTP-2026" target="_blank">GitHub</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="glavni-kontejner">
+        <aside class="lijevi-sidebar">
+
+            <input type="checkbox" id="mode-toggle" class="mode-checkbox">
+
+            <label for="mode-toggle" class="slide-kontejner">
+                <div class="ikona-omotac">
+                    <img src="images/lightmode.png" alt="Light mode" class="ikona-sunce">
+                    <img src="images/darkmode.png" alt="Dark mode" class="ikona-mesec">
+                </div>
+
+                <div class="slide-putanja">
+                    <div class="slide-kruzic"></div>
+                </div>
+            </label>
+
+            <h3>Kategorije upita</h3>
+
+            <ul>
+                <li><a href="#">Preporuka filma</a></li>
+                <li><a href="#">Recenzija</a></li>
+                <li><a href="#">Prijava problema</a></li>
+                <li><a href="#">Saradnja</a></li>
+                <li><a href="#">Ostalo</a></li>
+            </ul>
+
+        </aside>
+
+        <!-- GLAVNI SADRZAJ -->
+        <main class="kontakt-sadrzaj">
+
+            <section class="kontakt-sekcija">
+
+                <h1>Kontaktirajte CineGuide</h1>
+
+                <p>
+                    Imate preporuku za film, želite poslati svoju recenziju
+                    ili prijaviti problem na stranici? Javite nam se putem forme ispod.
+                </p>
+
+                
+                <form id="kontakt-forma">
+
+                    
+                    <div class="forma-grupa">
+                        <label for="ime">Ime</label>
+                        <input type="text" id="ime" class="unos-polje" name="ime" 
+                        placeholder="Unesite vaše ime" autocomplete="given-name">
+                        <span class="greska" id="ime-greska"></span>
+                    </div>
+                    
+                    <div class="forma-grupa">
+                        <label for="prezime">Prezime</label>
+                        <input type="text" id="prezime"class="unos-polje"  name="prezime" 
+                        placeholder="Unesite vaše prezime" autocomplete="family-name">
+                        <span class="greska" id="prezime-greska"></span>
+                    </div>
+
+                    <div class="forma-grupa">
+                        <label for="email">Email adresa</label>
+                        <input type="text" id="email" class="unos-polje" name="email" 
+                        placeholder="example@gmail.com" autocomplete="email">
+                        <span class="greska" id="email-greska"></span>
+                    </div>
+                    
+                    <div class="forma-grupa">
+                        <label for="telefon">Broj telefona</label>
+                        <input type="text" id="telefon" class="unos-polje" name="telefon"  
+                        placeholder="+387 61 123 456" autocomplete="tel">
+                        <span class="greska" id="telefon-greska"></span>
+                    </div>
+
+                    <div class="forma-grupa">
+                        <label for="tema">Tema upita</label>
+                        <select id="tema" name="tema" class="unos-polje">
+
+                            <option value="">Odaberite temu</option>
+                            <option value="preporuka">
+                                Preporuka filma
+                            </option>
+
+                            <option value="recenzija">
+                                Slanje recenzije
+                            </option>
+
+                            <option value="problem">
+                                Prijava problema
+                            </option>
+
+                            <option value="saradnja">
+                                Saradnja
+                            </option>
+
+                            <option value="ostalo">
+                                Ostalo
+                            </option>
+
+                        </select>
+
+                        <span class="greska" id="tema-greska"></span>
+                    </div>
+
+                    <div class="forma-grupa">
+                        <label for="poruka">Vaša poruka</label>
+
+                        <textarea
+                            id="poruka" name="poruka" rows="7"
+                             placeholder="Napišite svoju recenziju, preporuku ili pitanje..."
+                        ></textarea>
+
+                        <span class="greska" id="poruka-greska"></span>
+                    </div>
+
+                    <div class="dugmad-forme">
+                        <button type="submit" class="posalji-btn">
+                            Pošalji poruku
+                        </button>
+
+                        <button type="reset" class="reset-btn">
+                            Resetuj formu
+                        </button>
+
+                    </div>
+                </form>
+
+                <div id="uspjesna-poruka"></div>
+                <section class="kontakt-info">
+
+    <h2>Kontakt informacije</h2>
+
+    <p>Email: info@cineguide.ba</p>
+    <p>Telefon: +387 61 123 456</p>
+    <p>Lokacija: Tuzla, Bosna i Hercegovina</p>
+
+                </section>
+        </main>
+
+        <aside class="desni-sidebar">
+            <h3 style="color: #e50914; margin-bottom: 15px;">
+                Film sedmice
+            </h3>
+
+            <div class="film-sedmice">
+
+                <picture>
+              
+             <img src="images/film1.jpg" alt="Film sedmice" class="film-slika">
+             </picture>
+                <h4>Akcioni Heroj</h4>
+
+                <p>
+                    Spektakularni akcioni film sa vrhunskim efektima
+                    i nevjerovatnim scenama borbe.
+                </p>
+
+            </div>
+
+            <blockquote style="margin-top: 20px;">
+                "Filmovi nas vode na mjesta koja nikada ne bismo mogli posjetiti."
+            </blockquote>
+
+            <h3 style="margin-top: 25px;">
+                Pratite nas
+            </h3>
+
+            <ul class="drustvene-mreze">
+                <li><a href="#">Instagram</a></li>
+                <li><a href="#">YouTube</a></li>
+                <li><a href="#">TikTok</a></li>
+                <li><a href="#">Facebook</a></li>
+             </ul>
+          </aside>
+           </div>
+
+    <footer style="text-align: center; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+        <p>&copy; 2026 CineGuide. Sva prava zadržana.</p>
+        <p style="font-size: 0.8rem; color: #666;">
+            Autori: Zara Bulić, Amir Kešetović, Amir Kavazović
+        </p>
+    </footer>
+</body>
+</html>
