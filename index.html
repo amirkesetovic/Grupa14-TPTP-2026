@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CineGuide - Tvoja Filmska Baza</title>
     <link rel="stylesheet" href="css/tptpstil.css">
+    <script src="js/tptpskripte.js" defer></script>
 </head>
 <body>
 
@@ -12,12 +13,12 @@
         <div class="logo">
             <img src="images/placeholder.png" alt="CineGuide Logo" class="logo-slika">
         </div>
-        <nav>
+        <nav aria-label="Glavna navigacija">
             <ul>
                 <li><a href="index.html">Početna</a></li>
                 <li><a href="kontakt.html">Kontakt</a></li>
                 <li><a href="sadrzaj.html">Sadržaj</a></li>
-                <li><a href="#">GitHub</a></li>
+                <li><a href="https://github.com/amirkesetovic/Grupa14-TPTP-2026">GitHub</a></li>
             </ul>
         </nav>
     </header>
@@ -39,20 +40,21 @@
 
     <h3>Kategorije</h3>
     <ul>
-        <li><a href="#">Akcija</a></li>
-        <li><a href="#">Komedija</a></li>
-        <li><a href="#">Drama</a></li>
-        <li><a href="#">Horor</a></li>
-        <li><a href="#">Sci-Fi</a></li>
-        <li><a href="#">Romantični</a></li>
-        <li><a href="#">Triler</a></li>
+        <li><a href="#" data-filter="akcija">Akcija</a></li>
+        <li><a href="#" data-filter="komedija">Komedija</a></li>
+        <li><a href="#" data-filter="drama">Drama</a></li>
+        <li><a href="#" data-filter="horor">Horor</a></li>
+        <li><a href="#" data-filter="sci-fi">Sci-Fi</a></li>
+        <li><a href="#" data-filter="romanticni">Romantični</a></li>
+        <li><a href="#" data-filter="triler">Triler</a></li>
     </ul>
 </aside>
 
         <main class="sadrzaj-filmova">
-            
-            <article class="film-kartica">
-                <img src="images/film1.jpg" alt="Akcioni Heroj">
+             <section class="filmovi">
+
+            <article class="film-kartica" data-kategorija="akcija">
+                <picture><img src="images/film1.jpg" alt="Akcioni Heroj">  </picture>
                 <div class="info">
                     <h3>Akcioni Heroj</h3>
                     <p>Uzbudljiv akcioni film pun adrenalina.</p>
@@ -62,7 +64,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica">
+            <article class="film-kartica" data-kategorija="komedija">
                 <img src="images/film2.jpg" alt="Smiješna priča">
                 <div class="info">
                     <h3>Smiješna priča</h3>
@@ -73,7 +75,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica">
+            <article class="film-kartica" data-kategorija="drama">
                 <img src="images/film3.jpg" alt="Teška odluka">
                 <div class="info">
                     <h3>Teška odluka</h3>
@@ -84,7 +86,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica">
+            <article class="film-kartica" data-kategorija="horor">
                 <img src="images/film4.jpg" alt="Noć straha">
                 <div class="info">
                     <h3>Noć straha</h3>
@@ -95,7 +97,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica">
+            <article class="film-kartica" data-kategorija="sci-fi">
                 <img src="images/film5.jpg" alt="Svemir">
                 <div class="info">
                     <h3>Putovanje kroz svemir</h3>
@@ -106,7 +108,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica">
+            <article class="film-kartica" data-kategorija="romanticni">
                 <img src="images/film6.jpg" alt="Ljubav">
                 <div class="info">
                     <h3>Ljubavna priča</h3>
@@ -117,7 +119,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica">
+            <article class="film-kartica" data-kategorija="triler">
                 <img src="images/film7.jpg" alt="Mračna tajna">
                 <div class="info">
                     <h3>Mračna tajna</h3>
@@ -127,7 +129,7 @@
                     <a href="#" class="detalji-btn">Detalji</a>
                 </div>
             </article>
-
+             </section>
         </main>
 
         <aside class="desni-sidebar">
