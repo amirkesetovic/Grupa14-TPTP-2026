@@ -14,7 +14,7 @@
     --sidebar-width: 200px;
     --aside-width: 320px;
 }
- {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -57,7 +57,7 @@ header nav ul {
 }
 
 header nav ul li a {
-    color: white;
+    color: var(--text-main);
     text-decoration: none;
     font-weight: 500;
     transition: 0.3s;
@@ -65,6 +65,20 @@ header nav ul li a {
 
 header nav ul li a:hover {
     color: var(--primary);
+}
+
+
+/* header ostaje na dark paletti */
+header {
+    background: rgba(10, 10, 10, 0.95);
+}
+
+header nav ul li a {
+    color: white !important;
+}
+
+header h1 {
+    color: white;
 }
 
 /* --- GLAVNI KONTEJNER (GRID) --- */
@@ -77,7 +91,7 @@ header nav ul li a:hover {
 
 /* --- LIJEVI SIDEBAR --- */
 .lijevi-sidebar {
-    background: #0f0f0f;
+    background: var(--bg-card);
     padding: 30px 20px;
     border-right: 1px solid var(--glass);
     position: sticky;
@@ -99,7 +113,7 @@ header nav ul li a:hover {
 }
 
 .lijevi-sidebar ul li a {
-    color: white;
+    color: var(--text-main);
     text-decoration: none;
     display: block;
     padding: 10px;
@@ -131,60 +145,77 @@ header nav ul li a:hover {
     transition: 0.3s;
 }
 
+.slide-kontejner {
+    width: 80px;
+    height: 40px;
+    background: var(--glass);
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 25px;
+    transition: 0.3s;
+}
+
 .ikona-omotac {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: 0.3s ease;
     position: relative;
+}
+
+#mode-toggle:checked + .slide-kontejner .ikona-omotac {
+    justify-content: flex-end;
+}
+
+.ikona-omotac {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    transition: 0.3s ease;
+}
+
+.ikona-sunce,
+.ikona-mesec {
     width: 28px;
     height: 28px;
+    transition: 0.3s ease;
 }
 
-.ikona-sunce, .ikona-mesec {
-    width: 100%;
-    height: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transition: 0.4s ease;
-}
-
-/* POČETNO STANJE - DARK MODE */
+/* dark mode je default */
 .ikona-sunce {
     opacity: 1;
     transform: scale(1);
-    filter: invert(1); /* Sunce je bijelo u mraku */
+    filter: invert(1);
 }
 
 .ikona-mesec {
     opacity: 0;
     transform: scale(0);
-    /* DODAJEMO BIJELI SJAJ OKO MJESECA */
-    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8)); 
 }
 
-/* --- KADA SE KLIKNE (LIGHT MODE) --- */
-
-/* Mjesec postaje vidljiv sa sjajem */
-#mode-toggle:checked + .slide-kontejner .ikona-mesec {
-    opacity: 1;
-    transform: scale(1);
-    filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.2)); /* Na svijetloj pozadini sjena je tamna */
-}
-
+/* light mode toggle */
 #mode-toggle:checked + .slide-kontejner .ikona-sunce {
     opacity: 0;
     transform: scale(0);
 }
 
-/* Pomjeranje slide dugmeta */
-#mode-toggle:checked + .slide-kontejner .slide-kruzic {
-    left: 27px;
+#mode-toggle:checked + .slide-kontejner .ikona-mesec {
+    opacity: 1;
+    transform: scale(1);
 }
 
-#mode-toggle:checked + .slide-kontejner .slide-putanja {
-    background: var(--primary);
+#mode-toggle:checked + .slide-kontejner .ikona-omotac {
+    justify-content: flex-end;
 }
 
 /* Globalna promjena varijabli stranice */
-:root:has(#mode-toggle:checked) {
+/* LIGHT MODE */
+body.light-mode {
     --bg-body: #f5f5f5;
     --bg-card: #ffffff;
     --text-main: #1a1a1a;
@@ -282,7 +313,7 @@ header nav ul li a:hover {
 /* --- DESNI SIDEBAR (VIDEO) --- */
 .desni-sidebar {
     padding: 30px 20px;
-    background: #0f0f0f;
+    background: var(--bg-card);
     border-left: 1px solid var(--glass);
 }
 
@@ -306,7 +337,7 @@ header nav ul li a:hover {
 footer {
     text-align: center;
     padding: 40px;
-    background: #000;
+    background: rgba(10, 10, 10, 0.95); /* footer ostaje na dark mode */
     border-top: 1px solid var(--glass);
 }
 /* Stilovi za logo u headeru */
@@ -363,4 +394,16 @@ footer {
 .sadrzaj-preko-videa {
     max-width: 80%;       /* Da ne ide od ruba do ruba */
     z-index: 10;          /* Mora biti veći od videa (-1) */
+}
+
+footer p {
+    color: white; /* footer ostaje na dark mode */
+}
+
+/* dodao nabrzaka zato sto me nerviralo, editajte po zelji -Kesetovic */
+.kontakt-sekcija { 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
