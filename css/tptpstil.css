@@ -224,11 +224,19 @@ body.light-mode {
 }
 
 /* --- SREDINA - MREŽA FILMOVA --- */
+
 .sadrzaj-filmova {
     padding: 40px;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    /* Responsive grid */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 320px));
+
     gap: 30px;
+
+    width: 100%;
 }
 
 .film-kartica {
@@ -248,7 +256,7 @@ body.light-mode {
 
 .film-kartica img {
     width: 100%;
-    height: 380px;
+    height: 200px;
     object-fit: cover;
     display: block;
 }
@@ -406,4 +414,172 @@ footer p {
     display: flex;
     flex-direction: column;
     gap: 20px;
+}
+
+/* ========================================= */
+/* HERO SLIDER */
+/* ========================================= */
+
+.sredisnji-sadrzaj {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.hero-slider {
+    position: relative;
+    width: 100%;
+    height: 420px;
+    overflow: hidden;
+    border-bottom: 1px solid var(--glass);
+}
+
+.slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(45%);
+}
+
+.slide-content {
+    position: absolute;
+    left: 50px;
+    bottom: 50px;
+    max-width: 500px;
+    z-index: 5;
+}
+
+.slide-content h1 {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: white;
+}
+
+.slide-content p {
+    font-size: 1.1rem;
+    color: #e0e0e0;
+}
+
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    z-index: 10;
+    transition: 0.3s;
+}
+
+.nav-btn:hover {
+    background: rgba(0,0,0,0.8);
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+.dots {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.dot.active {
+    background: white;
+}
+
+/* ========================================= */
+/* FILMOVI ISPOD SLIDERA */
+/* ========================================= */
+
+.sadrzaj-filmova {
+    padding: 40px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
+@media (max-width: 1200px) {
+
+    .glavni-kontejner {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .desni-sidebar {
+        display: none;
+    }
+
+}
+
+@media (max-width: 768px) {
+
+    .glavni-kontejner {
+        grid-template-columns: 1fr;
+    }
+
+    .lijevi-sidebar {
+        display: none;
+    }
+
+    .hero-slider {
+        height: 300px;
+    }
+
+    .slide-content {
+        left: 25px;
+        bottom: 25px;
+    }
+
+    .slide-content h1 {
+        font-size: 2rem;
+    }
+
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin: 0 5px;
+    transition: 0.3s;
+    align-items: baseline;
 }
