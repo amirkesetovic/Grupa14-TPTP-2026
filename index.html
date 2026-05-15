@@ -36,6 +36,7 @@
 
     <h3>Kategorije</h3>
     <ul>
+        <li><a href="#" data-filter="sve">Sve</a></li>
         <li><a href="#" data-filter="akcija">Akcija</a></li>
         <li><a href="#" data-filter="komedija">Komedija</a></li>
         <li><a href="#" data-filter="drama">Drama</a></li>
@@ -57,34 +58,36 @@
         <div class="slides">
 
             <div class="slide">
-                <img src="images/film1.jpg" alt="Akcioni Heroj">
+                <img src="images/TG_poster.jpeg" alt="Top Gun">
 
                 <div class="slide-content">
-                    <h1>Akcioni Heroj</h1>
+                    <h1>Top Gun + Top Gun Maverick</h1>
                     <p>
-                        Uzbudljiv akcioni film pun adrenalina i spektakularnih scena.
+                        Akcioni klasik i njegov savremeni nastavak koji su osvojili publiku.
                     </p>
                 </div>
             </div>
 
             <div class="slide">
-                <img src="images/film5.jpg" alt="Putovanje kroz svemir">
+                <video autoplay muted loop playsinline class="slide-video">
+                    <source src="images/TMAG_trailer.mp4" type="video/mp4">
+                </video>
 
                 <div class="slide-content">
-                    <h1>Putovanje kroz svemir</h1>
+                    <h1>Mandelorian i Grogu</h1>
                     <p>
-                        Naučno-fantastična avantura kroz nepoznate galaksije.
+                        Omiljeni likovi iz Star Wars univerzuma i njihova avantura kroz galaksiju.
                     </p>
                 </div>
             </div>
 
             <div class="slide">
-                <img src="images/film7.jpg" alt="Mračna tajna">
+                <img src="images/O_poster.jpeg" alt="Opsesija">
 
                 <div class="slide-content">
-                    <h1>Mračna tajna</h1>
+                    <h1>Opsesija</h1>
                     <p>
-                        Napet triler koji vas drži u neizvjesnosti do samog kraja.
+                        Film o opsesivnoj ljubavi i njenim tragičnim posljedicama.
                     </p>
                 </div>
             </div>
@@ -97,18 +100,18 @@
 
     <section class="sadrzaj-filmova">
 
-            <article class="film-kartica" data-kategorija="akcija">
-                <picture><img src="images/film1.jpg" alt="Akcioni Heroj">  </picture>
+            <article class="film-kartica" data-kategorija="akcija sve">
+                <picture><img src="images/TG_poster.jpeg" alt="Top Gun">  </picture>
                 <div class="info">
-                    <h3>Akcioni Heroj</h3>
-                    <p>Uzbudljiv akcioni film pun adrenalina.</p>
+                    <h3>Top Gun + Top Gun Maverick</h3>
+                    <p>Akcioni klasik i njegov savremeni nastavak koji su osvojili publiku.</p>
                     <p class="rating"><strong>Ocjena:</strong> <span class="stars">★★★★☆</span> <span class="ocjena-broj">4.8/5</span></p>
                     <p class="misljenje"><strong>Naše mišljenje:</strong> Vrhunski specijalni efekti.</p>
                     <a href="#" class="detalji-btn">Detalji</a>
                 </div>
             </article>
 
-            <article class="film-kartica" data-kategorija="komedija">
+            <article class="film-kartica" data-kategorija="komedija sve">
                 <img src="images/film2.jpg" alt="Smiješna priča">
                 <div class="info">
                     <h3>Smiješna priča</h3>
@@ -119,7 +122,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica" data-kategorija="drama">
+            <article class="film-kartica" data-kategorija="drama sve">
                 <img src="images/film3.jpg" alt="Teška odluka">
                 <div class="info">
                     <h3>Teška odluka</h3>
@@ -130,7 +133,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica" data-kategorija="horor">
+            <article class="film-kartica" data-kategorija="horor sve">
                 <img src="images/film4.jpg" alt="Noć straha">
                 <div class="info">
                     <h3>Noć straha</h3>
@@ -141,7 +144,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica" data-kategorija="sci-fi">
+            <article class="film-kartica" data-kategorija="sci-fi sve">
                 <img src="images/film5.jpg" alt="Svemir">
                 <div class="info">
                     <h3>Putovanje kroz svemir</h3>
@@ -152,7 +155,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica" data-kategorija="romanticni">
+            <article class="film-kartica" data-kategorija="romanticni sve">
                 <img src="images/film6.jpg" alt="Ljubav">
                 <div class="info">
                     <h3>Ljubavna priča</h3>
@@ -163,7 +166,7 @@
                 </div>
             </article>
 
-            <article class="film-kartica" data-kategorija="triler">
+            <article class="film-kartica" data-kategorija="triler sve">
                 <img src="images/film7.jpg" alt="Mračna tajna">
                 <div class="info">
                     <h3>Mračna tajna</h3>
@@ -177,7 +180,7 @@
         </main>
 
         <aside class="desni-sidebar">
-            <h3 style="color: #e50914; margin-bottom: 15px;">Trailer sedmice</h3>
+            <h3 class="trailer-naslov">Trailer sedmice</h3>
             <div class="video-okvir">
                 <section class="video-kontejner">
     <video autoplay loop muted playsinline class="pozadinski-video">
@@ -191,18 +194,20 @@
                     <source src="images/tvoj-video.mp4" type="video/mp4">
                 </video>
             </div>
-            <p style="margin-top: 10px; font-size: 0.9rem; color: #a0a0a0;">Najnoviji trailer za hit godine.</p>
+            <p class="trailer-opis">Najnoviji trailer za hit godine.</p>
         </aside>
 
     </div>
 
-    <footer style="text-align: center; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px;">
+    <footer class="footer-glavni">
         <p>&copy; 2026 CineGuide. Sva prava zadržana.</p>
-        <p style="font-size: 0.8rem; color: #666;">Autori: Zara Bulić, Amir Kešetović, Amir Kavazović</p>
+        <p class="footer-autori">Autori: Zara Bulić, Amir Kešetović, Amir Kavazović</p>
         <a href="https://www.x.com" target="_blank"><img src="images/x-icon.png" alt="X Logo" class="icon"></a>
         <a href="https://www.instagram.com" target="_blank"><img src="images/Instagram_icon.png" alt="Instagram Logo" class="icon"></a>
         <a href="https://www.youtube.com" target="_blank"><img src="images/Youtube_icon.png" alt="Youtube Logo" class="icon"></a>
     </footer>
 
 </body>
+</html>
+
 </html>
