@@ -339,4 +339,92 @@ if (forma) {
     });
 
 }
+    // =====================================
+// RECENZIJE FILMOVA
+// =====================================
+
+const detaljiDugmad =
+    document.querySelectorAll(".detalji-btn[data-film]");
+
+const heroSlider =
+    document.querySelector(".hero-slider");
+
+const filmGrid =
+    document.querySelector(".sadrzaj-filmova");
+
+const recenzije =
+    document.querySelector("#recenzije");
+
+const sveRecenzije =
+    document.querySelectorAll(".film-recenzija");
+
+const nazadDugmad =
+    document.querySelectorAll(".nazad-btn");
+
+// OTVARANJE RECENZIJE
+
+detaljiDugmad.forEach(dugme => {
+
+    dugme.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        const film =
+            dugme.dataset.film;
+
+        // SAKRI GLAVNI SADRŽAJ
+
+        heroSlider.style.display = "none";
+
+        filmGrid.style.display = "none";
+
+        // PRIKAŽI SEKCIJU RECENZIJA
+
+        recenzije.classList.remove("hidden");
+
+        // SAKRI SVE RECENZIJE
+
+        sveRecenzije.forEach(recenzija => {
+
+            recenzija.classList.add("hidden");
+
+        });
+
+        // PRIKAŽI ODGOVARAJUĆU
+
+        const aktivnaRecenzija =
+            document.querySelector(
+                `[data-recenzija="${film}"]`
+            );
+
+        if (aktivnaRecenzija) {
+
+            aktivnaRecenzija.classList.remove("hidden");
+
+        }
+
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+
+    });
+
+});
+
+// POVRATAK
+
+nazadDugmad.forEach(dugme => {
+
+    dugme.addEventListener("click", () => {
+
+        heroSlider.style.display = "block";
+
+        filmGrid.style.display = "grid";
+
+        recenzije.classList.add("hidden");
+
+    });
+
+});
 });
