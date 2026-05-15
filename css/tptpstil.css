@@ -454,6 +454,13 @@ footer p {
     filter: brightness(45%);
 }
 
+.slide-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(45%);
+}
+
 .slide-content {
     position: absolute;
     left: 50px;
@@ -582,4 +589,48 @@ footer p {
     margin: 0 5px;
     transition: 0.3s;
     align-items: baseline;
+}
+
+
+/* ===== INLINE STILOVI PREBAČENI IZ HTML-A ===== */
+
+.trailer-naslov {
+    color: #e50914;
+    margin-bottom: 15px;
+}
+
+.trailer-opis {
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: #a0a0a0;
+}
+
+.footer-glavni {
+    text-align: center;
+    padding: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 20px;
+}
+
+.footer-autori {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.kontakt-film-naslov {
+    color: #e50914;
+    margin-bottom: 15px;
+}
+
+.kontakt-citat {
+    margin-top: 20px;
+}
+
+.pratite-nas-naslov {
+    margin-top: 25px;
+}
+
+.aktivan-filter {
+    background: var(--primary);
+    color: white !important;
 }
