@@ -3,20 +3,25 @@
 // :3
 // -Kesetovic
 
-document.addEventListener("DOMContentLoaded", () => {
+// Zapoceta dokumentacija AI koda (potrebno dodati za validation form)
+
+document.addEventListener("DOMContentLoaded", () => {  
 
     const modeToggle = document.getElementById("mode-toggle");
 
-    // Load saved theme
     if (localStorage.getItem("theme") === "light") {
         document.body.classList.add("light-mode");
 
-        if (modeToggle) {
+        if (modeToggle) { // ChatGPT: Provjera da li element postoji prije nego što se pokuša 
+                          // pristupiti njegovim svojstvima
             modeToggle.checked = true;
         }
     }
 
-    // Toggle light mode i sacuvati u local
+    // Sljedeći blok dodaje ChatGPT. Dodajemo detekciju promjene stanja toggle-a, te provjeravamo da li je
+    // uključena svijetla tema. Ako jeste, dodajemo klasu "light-mode" na body element i spremamo odabranu
+    // temu u localStorage.
+    
     if (modeToggle) {
 
         modeToggle.addEventListener("change", () => {
@@ -34,9 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     }
-    // =====================================
-    // HERO SLIDER
-    // =====================================
 
     const slides = document.querySelector(".slides");
     const slide = document.querySelectorAll(".slide");
@@ -48,7 +50,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (slides && slide.length > 0) {
 
-        // Kreiranje tačkica
+        // Sintaksa funkcije naučena od ChatGPT-a.
+        // Pozivom funkcije prvo pomjeramo slider uz pomoć slides.style.transform gdje
+        // `translateX(-${currentIndex * 100}%)` znači da se slider pomjera ulijevo za 100%
+        // širine po svakom indeksu. Zatim uklanjamo klasu "active" sa svih tačaka i
+        // dodajemo je samo onoj koja odgovara trenutnom indeksu.
+
+        
+        function updateSlider() {
+
+            slides.style.transform =
+                `translateX(-${currentIndex * 100}%)`;
+
+            dots.forEach(dot =>
+                dot.classList.remove("active")
+            );
+
+            dots[currentIndex].classList.add("active");
+
+        }
+
+        // Sljedeći blok je napravljen pomoću ChatGPT-a. Za svaku sliku u slideru stvara tačku (dot)
+        // ispod slidera, i dodaje event listener koji omogućava korisniku da klikom na tačku promijeni sliku.
+        
         slide.forEach((_, index) => {
 
             const dot = document.createElement("div");
@@ -70,19 +94,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         const dots = document.querySelectorAll(".dot");
-
-        function updateSlider() {
-
-            slides.style.transform =
-                `translateX(-${currentIndex * 100}%)`;
-
-            dots.forEach(dot =>
-                dot.classList.remove("active")
-            );
-
-            dots[currentIndex].classList.add("active");
-
-        }
 
         nextBtn.addEventListener("click", () => {
 
@@ -184,4 +195,148 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
     });
+
+// VALIDACIJA FORME
+
+const forma = document.querySelector("#kontakt-forma");
+
+if (forma) {
+
+    const ime = document.querySelector("#ime");
+    const prezime = document.querySelector("#prezime");
+    const email = document.querySelector("#email");
+    const telefon = document.querySelector("#telefon");
+    const tema = document.querySelector("#tema");
+    const poruka = document.querySelector("#poruka");
+
+    const imeGreska = document.querySelector("#ime-greska");
+    const prezimeGreska = document.querySelector("#prezime-greska");
+    const emailGreska = document.querySelector("#email-greska");
+    const telefonGreska = document.querySelector("#telefon-greska");
+    const temaGreska = document.querySelector("#tema-greska");
+    const porukaGreska = document.querySelector("#poruka-greska");
+
+    const uspjesnaPoruka =
+        document.querySelector("#uspjesna-poruka");
+
+    forma.addEventListener("submit", (e) => {
+
+        e.preventDefault();
+
+        // RESET GREŠAKA
+
+        imeGreska.textContent = "";
+        prezimeGreska.textContent = "";
+        emailGreska.textContent = "";
+        telefonGreska.textContent = "";
+        temaGreska.textContent = "";
+        porukaGreska.textContent = "";
+        uspjesnaPoruka.textContent = "";
+
+        let validnaForma = true;
+
+        // IME
+
+        if (ime.value.trim() === "") {
+
+            imeGreska.textContent =
+                "Ime je obavezno.";
+
+            validnaForma = false;
+
+        }
+
+        if (prezime.value.trim() === "") {
+
+            prezimeGreska.textContent =
+                "Prezime je obavezno.";
+
+            validnaForma = false;
+
+        }
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (email.value.trim() === "") {
+
+            emailGreska.textContent =
+                "Email je obavezan.";
+
+            validnaForma = false;
+
+        }
+        else if (
+            !emailRegex.test(email.value.trim())
+        ) {
+
+            emailGreska.textContent =
+                "Unesite ispravan email.";
+
+            validnaForma = false;
+
+        }
+
+        const telefonRegex =
+            /^[0-9+\s-]+$/;
+
+        if (telefon.value.trim() === "") {
+
+            telefonGreska.textContent =
+                "Telefon je obavezan.";
+
+            validnaForma = false;
+
+        }
+        else if (
+            !telefonRegex.test(telefon.value.trim())
+        ) {
+
+            telefonGreska.textContent =
+                "Telefon nije validan.";
+
+            validnaForma = false;
+
+        }
+
+        if (tema.value === "") {
+
+            temaGreska.textContent =
+                "Odaberite temu.";
+
+            validnaForma = false;
+
+        }
+
+        if (poruka.value.trim() === "") {
+
+            porukaGreska.textContent =
+                "Poruka je obavezna.";
+
+            validnaForma = false;
+
+        }
+        else if (
+            poruka.value.trim().length < 10
+        ) {
+
+            porukaGreska.textContent =
+                "Poruka mora imati barem 10 karaktera.";
+
+            validnaForma = false;
+
+        }
+
+        if (validnaForma) {
+
+            uspjesnaPoruka.textContent =
+                "Forma uspješno poslana!";
+
+            forma.reset();
+
+        }
+
+    });
+
+}
 });
