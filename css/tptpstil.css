@@ -634,3 +634,105 @@ footer p {
     background: var(--primary);
     color: white !important;
 }
+
+/* Validacija forme */
+
+.greska {
+    color: #ff4d4d;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    display: block;
+}
+
+#uspjesna-poruka {
+    margin-top: 20px;
+    color: #4caf50;
+    font-weight: 600;
+}
+
+@media (max-width: 768px) {
+
+    /* HEADER */
+
+    header {
+        height: auto;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px;
+        gap: 15px;
+    }
+
+    /* NAVIGACIJA */
+
+    header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+
+    flex-wrap: nowrap;
+    justify-content: center;
+    }
+
+    header nav ul li a {
+    white-space: nowrap;
+    }
+
+    /* GLAVNI KONTEJNER */
+
+    .glavni-kontejner {
+        grid-template-columns: 1fr;
+        margin-top: 120px;
+    }
+
+    /* LIJEVI SIDEBAR */
+
+    .lijevi-sidebar {
+        display: block;
+        position: static;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid var(--glass);
+    }
+
+    /* KATEGORIJE */
+
+    .lijevi-sidebar ul {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    /* DESNI SIDEBAR */
+
+    .desni-sidebar {
+        display: none;
+    }
+
+    /* HERO SLIDER */
+
+    .hero-slider {
+        height: 250px;
+    }
+
+    .slide-content {
+        left: 20px;
+        bottom: 20px;
+        max-width: 90%;
+    }
+
+    .slide-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .slide-content p {
+        font-size: 0.9rem;
+    }
+
+    /* FILM KARTICE */
+
+    .sadrzaj-filmova {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+}
