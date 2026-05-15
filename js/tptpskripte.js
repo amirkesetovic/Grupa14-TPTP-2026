@@ -122,4 +122,66 @@ document.addEventListener("DOMContentLoaded", () => {
         }, 5000);
 
     }
+    const filterLinkovi = document.querySelectorAll("[data-filter]");
+    const filmKartice = document.querySelectorAll(".film-kartica");
+
+    let aktivniFilter = null;
+
+    filterLinkovi.forEach(link => {
+
+        link.addEventListener("click", (e) => {
+
+            e.preventDefault();
+
+            const kategorija = link.dataset.filter;
+
+            // RESET FILTERA
+            if (
+                aktivniFilter === kategorija ||
+                kategorija === "sve"
+            ) {
+
+                aktivniFilter = null;
+
+                // ukloni aktivne klase
+                filterLinkovi.forEach(l => {
+                    l.classList.remove("aktivan-filter");
+                });
+
+                // prikazi sve filmove
+                filmKartice.forEach(film => {
+                    film.style.display = "flex";
+                });
+
+                return;
+            }
+
+            // ukloni prethodno aktivne filtere
+            filterLinkovi.forEach(l => {
+                l.classList.remove("aktivan-filter");
+            });
+
+            // dodaj aktivnu klasu samo ako nije "sve"
+            if (kategorija !== "sve") {
+                link.classList.add("aktivan-filter");
+            }
+
+            aktivniFilter = kategorija;
+
+            // filtriranje filmova
+            filmKartice.forEach(film => {
+
+                const kategorije = film.dataset.kategorija.split(" ");
+
+                if (kategorije.includes(kategorija)) {
+                    film.style.display = "flex";
+                } else {
+                    film.style.display = "none";
+                }
+
+            });
+
+        });
+
+    });
 });
