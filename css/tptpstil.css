@@ -127,6 +127,10 @@ header h1 {
     color: var(--primary);
     padding-left: 15px;
 }
+
+.desni-sidebar {
+        max-width: fit-content;
+    }
 /* --- DARK/LIGHT MODE--- */
 
 .mode-checkbox {
