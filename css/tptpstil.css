@@ -25,7 +25,6 @@ body {
     line-height: 1.6;
 }
 
-
 /* --- HEADER --- */
 header {
     background: rgba(10, 10, 10, 0.95);
@@ -130,7 +129,14 @@ header h1 {
 }
 
 .desni-sidebar {
-        max-width: fit-content;
+    background: var(--bg-card);
+    padding:
+        clamp(15px, 2vw, 30px)
+        clamp(10px, 1.5vw, 20px);
+    border-left: 1px solid var(--glass);
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
     }
 /* --- DARK/LIGHT MODE--- */
 
@@ -774,3 +780,40 @@ footer p {
 
 }
 
+/* --- RECENZIJE --- */
+
+.hidden {
+    display: none;
+}
+
+#recenzije {
+    width: 100%;
+    padding: 40px;
+}
+
+.film-recenzija {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.film-recenzija img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.film-recenzija h1 {
+    margin-bottom: 20px;
+    font-size: 2.5rem;
+}
+
+.film-recenzija p {
+    margin-bottom: 15px;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+.nazad-btn {
+    margin-bottom: 30px;
+}
