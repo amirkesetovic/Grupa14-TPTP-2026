@@ -19,8 +19,38 @@
                 <li><a href="kontakt.html">Kontakt</a></li>
                 <li><a href="sadrzaj.html">Sadržaj</a></li>
                 <li><a href="https://github.com/amirkesetovic/Grupa14-TPTP-2026">GitHub</a></li>
+                <li><a href="#" id="accessibility">Pristupačnost</a></li>
             </ul>
         </nav>
+
+
+<div class="accessibility-panel hidden" id="accessibility-panel">
+
+    <h3>Postavke pristupačnosti</h3>
+
+    <div class="accessibility-option">
+        <label for="font-size-slider">
+            Veličina fonta
+        </label>
+
+        <input
+            type="range"
+            id="font-size-slider"
+            min="14"
+            max="24"
+            value="16"
+        >
+
+        <span id="font-size-value">16px</span>
+    </div>
+
+    <div class="accessibility-option">
+        <button id="toggle-animations">
+            Isključi animacije
+        </button>
+    </div>
+
+</div>
     </header>
     <div class="glavni-kontejner">
         
@@ -82,7 +112,7 @@
             </div>
 
             <div class="slide">
-                <img src="images/O_poster.jpeg" alt="Opsesija">
+                <img src="images/Obsesija_poster.jpeg" alt="Opsesija">
 
                 <div class="slide-content">
                     <h1>Opsesija</h1>
@@ -112,7 +142,7 @@
             </article>
 
             <article class="film-kartica" data-kategorija="komedija sve">
-                <img src="images/DevilPrada.jpg" alt="Devil Wears Prada 2">
+                <img src="images/Devil_poster.jpg" alt="Devil Wears Prada 2">
                 <div class="info">
                     <h3>Devil Wears Prada 2</h3>
                     <p>Film koji prikazuje život u modnoj industriji.</p>
@@ -123,7 +153,7 @@
             </article>
 
             <article class="film-kartica" data-kategorija="drama sve">
-                <img src="images/michael2.png" alt="Michael film">
+                <img src="images/Michael_poster.png" alt="Michael film">
                 <div class="info">
                     <h3>Michael</h3>
                     <p>Biografski film koji prati život i nasljeđe "kralja popa", Michaela Jacksona</p>
@@ -134,7 +164,7 @@
             </article>
 
             <article class="film-kartica" data-kategorija="horor sve">
-                <img src="images/horor.jpg" alt="Hokum">
+                <img src="images/Hokum_poster.jpg" alt="Hokum">
                 <div class="info">
                     <h3>Hokum</h3>
                     <p>Psihološki horor film</p>
@@ -145,7 +175,7 @@
             </article>
 
             <article class="film-kartica" data-kategorija="sci-fi sve">
-                <img src="images/Starwars.jpg" alt="Mandalorian i Grogu">
+                <img src="images/TMAG_poster.jpeg" alt="Mandalorian i Grogu">
                 <div class="info">
                     <h3>Mandalorian i Grogu</h3>
                     <p>Novi film poznate franšize Star Wars </p>
@@ -156,7 +186,7 @@
             </article>
 
             <article class="film-kartica" data-kategorija="romanticni sve">
-                <img src="images/dramaaa.jpg" alt="Film Drama">
+                <img src="images/Drama_poster.jpg" alt="Film Drama">
                 <div class="info">
                     <h3>The Drama</h3>
                     <p>The Drama je mračna romantična komedija</p>
@@ -167,12 +197,34 @@
             </article>
 
             <article class="film-kartica" data-kategorija="triler sve">
-                <img src="images/triler2.jpg" alt="In The Grey">
+                <img src="images/ITG_poster.jpg" alt="In The Grey">
                 <div class="info">
                     <h3>In The Grey</h3>
                     <p>Napet triler pun obrta.</p>
                     <p class="rating"><strong>Ocjena:</strong> <span class="stars">★★★★☆</span> <span class="ocjena-broj">4.2/5</span></p>
                     <p class="misljenje"><strong>Naše mišljenje:</strong> Drži pažnju do kraja.</p>
+                    <a href="#" class="detalji-btn" data-film="grey">Detalji</a>
+                </div>
+            </article>
+
+            <article class="film-kartica" data-kategorija="horor sve">
+                <img src="images/Obsesija_poster.jpeg" alt="Opsesija">
+                <div class="info">
+                    <h3>Opsesija</h3>
+                    <p>Psihološki horor film</p>
+                    <p class="rating"><strong>Ocjena:</strong> <span class="stars">★★★★☆</span> <span class="ocjena-broj">4.0/5</span></p>
+                    <p class="misljenje"><strong>Naše mišljenje:</strong> Horor koji ostavlja snažan utisak.</p>
+                    <a href="#" class="detalji-btn" data-film="grey">Detalji</a>
+                </div>
+            </article>
+
+            <article class="film-kartica" data-kategorija="sci-fi sve">
+                <img src="images/TADC_poster.jpg" alt="The Amazing Digital Circus">
+                <div class="info">
+                    <h3>The Amazing Digital Circus</h3>
+                    <p>Animirani film o nevjerovatnom circusu.</p>
+                    <p class="rating"><strong>Ocjena:</strong> <span class="stars">★★★★★</span> <span class="ocjena-broj">4.8/5</span></p>
+                    <p class="misljenje"><strong>Naše mišljenje:</strong> Prekrasna animacija i prica.</p>
                     <a href="#" class="detalji-btn" data-film="grey">Detalji</a>
                 </div>
             </article>
@@ -280,9 +332,12 @@
     <div class="sadrzaj-preko-videa">
     </div>
     </section>
-                <video autoplay muted loop playsinline poster="images/video-placeholder.jpg" class="lokalni-video">
-                    <source src="images/tvoj-video.mp4" type="video/mp4">
-                </video>
+                <a href="https://www.youtube.com/watch?v=3zOLzsbOleM" target="_blank">
+                    
+                    <video autoplay muted loop playsinline poster="images/video-placeholder.jpg" class="lokalni-video">
+                        <source src="images/Michael_trailer.mp4" type="video/mp4">
+                    </video>
+                </a>
             </div>
             <p class="trailer-opis">Najnoviji trailer za hit godine.</p>
         </aside>
