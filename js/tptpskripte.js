@@ -427,4 +427,104 @@ nazadDugmad.forEach(dugme => {
     });
 
 });
+
+// =====================================
+// ACCESSIBILITY PANEL
+// =====================================
+
+const accessibilityBtn =
+    document.querySelector("#accessibility");
+
+const accessibilityPanel =
+    document.querySelector("#accessibility-panel");
+
+const fontSlider =
+    document.querySelector("#font-size-slider");
+
+const fontValue =
+    document.querySelector("#font-size-value");
+
+const contrastBtn =
+    document.querySelector("#toggle-contrast");
+
+const animationsBtn =
+    document.querySelector("#toggle-animations");
+
+// OTVARANJE MENIJA
+
+if (accessibilityBtn && accessibilityPanel) {
+
+    accessibilityBtn.addEventListener("click", (e) => {
+
+        e.preventDefault();
+
+        accessibilityPanel.classList.toggle("hidden");
+
+    });
+
+}
+
+// FONT SIZE
+
+if (fontSlider) {
+
+    // učitaj spremljenu vrijednost
+
+    const savedFontSize =
+        localStorage.getItem("fontSize");
+
+    if (savedFontSize) {
+
+        document.documentElement.style.fontSize =
+            `${savedFontSize}px`;
+
+        fontSlider.value = savedFontSize;
+
+        fontValue.textContent =
+            `${savedFontSize}px`;
+
+    }
+
+    fontSlider.addEventListener("input", () => {
+
+        const size = fontSlider.value;
+
+        document.documentElement.style.fontSize =
+            `${size}px`;
+
+        fontValue.textContent =
+            `${size}px`;
+
+        localStorage.setItem("fontSize", size);
+
+    });
+
+}
+
+// REDUCED MOTION
+
+if (animationsBtn) {
+
+    if (localStorage.getItem("motion") === "off") {
+
+        document.body.classList.add("reduce-motion");
+
+    }
+
+    animationsBtn.addEventListener("click", () => {
+
+        document.body.classList.toggle("reduce-motion");
+
+        const reduced =
+            document.body.classList.contains("reduce-motion");
+
+        localStorage.setItem(
+            "motion",
+            reduced ? "off" : "on"
+        );
+
+    });
+
+}
+
 });
