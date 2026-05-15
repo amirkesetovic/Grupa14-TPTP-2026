@@ -428,10 +428,6 @@ footer p {
     gap: 20px;
 }
 
-/* ========================================= */
-/* HERO SLIDER */
-/* ========================================= */
-
 .sredisnji-sadrzaj {
     display: flex;
     flex-direction: column;
@@ -543,20 +539,12 @@ footer p {
     background: white;
 }
 
-/* ========================================= */
-/* FILMOVI ISPOD SLIDERA */
-/* ========================================= */
-
 .sadrzaj-filmova {
     padding: 40px;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 30px;
 }
-
-/* ========================================= */
-/* RESPONSIVE */
-/* ========================================= */
 
 .icon {
     width: 30px;
@@ -640,6 +628,7 @@ footer p {
 
     header nav ul {
         gap: 18px;
+        font-size: 0.9rem;
     }
 
     /* LIJEVI SIDEBAR */
@@ -718,6 +707,7 @@ footer p {
 
     header nav ul li a {
     white-space: nowrap;
+    font-size: 0.8rem;
     }
 
     /* GLAVNI KONTEJNER */
@@ -778,6 +768,12 @@ footer p {
         padding: 20px;
     }
 
+    .accessibility-panel {
+        right: 15px;
+        left: 15px;
+        width: auto;
+    }
+
 }
 
 /* --- RECENZIJE --- */
@@ -816,4 +812,75 @@ footer p {
 
 .nazad-btn {
     margin-bottom: 30px;
+}
+
+/* --- PANEL ZA PRISTUPAČNOST --- */
+
+.accessibility-panel {
+    position: absolute;
+    top: 90px;
+    right: 40px;
+
+    width: 320px;
+
+    background: var(--bg-card);
+
+    border: 1px solid var(--glass);
+
+    border-radius: 15px;
+
+    padding: 20px;
+
+    z-index: 2000;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.accessibility-panel.hidden {
+    display: none;
+}
+
+.accessibility-panel h3 {
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+
+.accessibility-option {
+    margin-bottom: 20px;
+}
+
+.accessibility-option label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.accessibility-option input[type="range"] {
+    width: 100%;
+}
+
+.accessibility-option button {
+    width: 100%;
+    padding: 10px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: var(--primary);
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 600;
+
+    transition: 0.3s;
+}
+
+.accessibility-option button:hover {
+    background: #b20710;
+}
+
+body.reduce-motion * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
 }
