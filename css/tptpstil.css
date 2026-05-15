@@ -1,5 +1,3 @@
-/* CineGuide - Finalna Verzija*/
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
@@ -11,8 +9,8 @@
     --gold: #ffc107;
     --glass: rgba(255, 255, 255, 0.05);
     --header-height: 80px;
-    --sidebar-width: 200px;
-    --aside-width: 320px;
+    --sidebar-width: clamp(160px, 18vw, 240px);
+    --aside-width: clamp(220px, 24vw, 340px);
 }
 * {
     margin: 0;
@@ -92,7 +90,9 @@ header h1 {
 /* --- LIJEVI SIDEBAR --- */
 .lijevi-sidebar {
     background: var(--bg-card);
-    padding: 30px 20px;
+    padding:
+        clamp(15px, 2vw, 30px)
+        clamp(10px, 1.5vw, 20px);
     border-right: 1px solid var(--glass);
     position: sticky;
     top: var(--header-height);
@@ -101,7 +101,7 @@ header h1 {
 
 .lijevi-sidebar h3 {
     margin-bottom: 20px;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 1vw, 1.2rem);
     color: var(--text-muted);
 }
 
@@ -116,7 +116,8 @@ header h1 {
     color: var(--text-main);
     text-decoration: none;
     display: block;
-    padding: 10px;
+    font-size: clamp(0.8rem, 0.9vw, 1rem);
+    padding: clamp(8px, 1vw, 12px);
     border-radius: 8px;
     transition: 0.3s;
 }
@@ -736,3 +737,4 @@ footer p {
     }
 
 }
+
