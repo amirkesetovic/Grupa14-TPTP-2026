@@ -680,10 +680,6 @@ footer p {
         gap: 20px;
     }
 
-    .desni-sidebar {
-        display: none;
-    }
-
 }
 
 @media (max-width: 768px) {
