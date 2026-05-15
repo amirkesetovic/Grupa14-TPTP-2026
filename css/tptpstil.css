@@ -547,43 +547,6 @@ footer p {
 /* RESPONSIVE */
 /* ========================================= */
 
-@media (max-width: 1200px) {
-
-    .glavni-kontejner {
-        grid-template-columns: 180px 1fr;
-    }
-
-    .desni-sidebar {
-        display: none;
-    }
-
-}
-
-@media (max-width: 768px) {
-
-    .glavni-kontejner {
-        grid-template-columns: 1fr;
-    }
-
-    .lijevi-sidebar {
-        display: none;
-    }
-
-    .hero-slider {
-        height: 300px;
-    }
-
-    .slide-content {
-        left: 25px;
-        bottom: 25px;
-    }
-
-    .slide-content h1 {
-        font-size: 2rem;
-    }
-
-}
-
 .icon {
     width: 30px;
     height: 30px;
@@ -649,6 +612,74 @@ footer p {
     margin-top: 20px;
     color: #4caf50;
     font-weight: 600;
+}
+
+@media (max-width: 1440px) {
+
+    :root {
+        --sidebar-width: 170px;
+        --aside-width: 260px;
+    }
+
+    /* HEADER */
+
+    header {
+        padding: 0 25px;
+    }
+
+    header nav ul {
+        gap: 18px;
+    }
+
+    /* LIJEVI SIDEBAR */
+
+    .lijevi-sidebar {
+        padding: 20px 15px;
+    }
+
+    .lijevi-sidebar h3 {
+        font-size: 1rem;
+    }
+
+    .lijevi-sidebar ul li a {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    /* DESNI SIDEBAR */
+
+    .desni-sidebar {
+        padding: 20px 15px;
+    }
+
+    .video-okvir {
+        height: 350px;
+    }
+
+    /* HERO SLIDER */
+
+    .hero-slider {
+        height: 360px;
+    }
+
+    .slide-content h1 {
+        font-size: 2.3rem;
+    }
+
+    .slide-content p {
+        font-size: 1rem;
+    }
+
+    /* FILM GRID */
+
+    .sadrzaj-filmova {
+        grid-template-columns:
+            repeat(auto-fill, minmax(240px, 1fr));
+
+        padding: 30px;
+        gap: 20px;
+    }
+
 }
 
 @media (max-width: 768px) {
