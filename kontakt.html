@@ -21,8 +21,38 @@
                 <li><a href="kontakt.html">Kontakt</a></li>
                 <li><a href="sadrzaj.html">Sadržaj</a></li>
                 <li><a href="https://github.com/amirkesetovic/Grupa14-TPTP-2026" target="_blank">GitHub</a></li>
+                <li><a href="#" id="accessibility">Pristupačnost</a></li>
             </ul>
         </nav>
+
+            <!-- ACCESSIBILITY PANEL -->
+<div class="accessibility-panel hidden" id="accessibility-panel">
+
+    <h3>Postavke pristupačnosti</h3>
+
+    <div class="accessibility-option">
+        <label for="font-size-slider">
+            Veličina fonta
+        </label>
+
+        <input
+            type="range"
+            id="font-size-slider"
+            min="14"
+            max="24"
+            value="16"
+        >
+
+        <span id="font-size-value">16px</span>
+    </div>
+
+    <div class="accessibility-option">
+        <button id="toggle-animations">
+            Isključi animacije
+        </button>
+    </div>
+
+</div>
     </header>
 
     <div class="glavni-kontejner">
