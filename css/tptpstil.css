@@ -500,7 +500,11 @@ body.reduce-motion * {
     gap: 15px;
     margin-top: 20px;
 }
-
+.galerija-filmova a {
+    display: block;
+    overflow: hidden;
+    border-radius: 12px;
+}
 .galerija-filmova img {
     width: 100%;
     height: 220px;        /* svi isti okvir */
