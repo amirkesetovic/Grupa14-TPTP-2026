@@ -1,9 +1,5 @@
-// Skripta
-// Trenutno upravlja light mode toggle i slider, potrebno dodati accessibility features i optimizaciju za mobilne uređaje
-// :3
-// -Kesetovic
-
-// Zapoceta dokumentacija AI koda (potrebno dodati za validation form)
+// Dokumentacija AI alata izvršena. Sve ostalo je naučeno kroz 
+// tutoriale, W3Schools, i puno situacija gdje stvari nisu funkcionisale.
 
 document.addEventListener("DOMContentLoaded", () => {  
 
@@ -256,6 +252,20 @@ if (forma) {
 
         const emailRegex =
             /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Regularni izraz (RegEx) za osnovnu validaciju email adrese.
+            //
+            // U kosim crtama / / se stavlja izraz.
+            // ^ označava početak stringa.
+            // Kada je unutar uglastih zagrada [ ] i ^ na početku, to znači "ne sadrži".
+            // [^\s@]+ znači "jedan ili više karaktera koji nisu razmak ili @"
+            // @ je doslovni znak @.
+            // \. je doslovna tačka (mora se escape-ovati sa \ jer tačka inače znači "bilo koji znak").
+            // $ označava kraj stringa.
+
+            // Dakle, ovaj RegEx nam govori da tražimo string koji počinje sa jednim ili više karaktera
+            // koji nisu razmak ili @, zatim slijedi @, zatim opet jedan ili više karaktera koji nisu razmak
+            // ili @, zatim tačka, i na kraju opet jedan ili više karaktera koji nisu razmak ili @.
 
         if (email.value.trim() === "") {
 
@@ -546,6 +556,7 @@ if (animationsBtn) {
     });
 
 }
+
 const image = document.getElementById("kino-mapa");
 
 const areas = document.querySelectorAll("area");
@@ -555,37 +566,77 @@ const svg = document.querySelector(".map-highlight");
 const ORIGINAL_WIDTH = 530;
 const ORIGINAL_HEIGHT = 340;
 
-
+// Ovaj segment vecinom je potpomogao ChatGPT. Funkcija resizeMapAreas se poziva prilikom
+// učitavanja stranice i prilikom promjene veličine prozora. Računa trenutne dimenzije slike
+// i scale faktore, te prolazi kroz svaki area element i skalira njegove koordinate u skladu
+// sa trenutnom veličinom slike. Za krugove se koristi poseban način skaliranja kako bi se očuvao
+// njihov oblik. Nakon skaliranja, nove koordinate se postavljaju nazad u area elemente.
 
 function resizeMapAreas() {
 
+    // Trenutna širina prikazane slike u browseru.
     const currentWidth = image.clientWidth;
+
+    // Trenutna visina prikazane slike u browseru.
     const currentHeight = image.clientHeight;
 
+    // Horizontalni scale faktor.
+    // Npr. ako je original 530px,
+    // a trenutno prikazana širina 265px,
+    // scaleX će biti 0.5.
     const scaleX = currentWidth / ORIGINAL_WIDTH;
+
+    // Vertikalni scale faktor.
     const scaleY = currentHeight / ORIGINAL_HEIGHT;
 
 
+    // Prolazi kroz svaki <area> element.
     areas.forEach(area => {
 
+        // Uzima originalne koordinate iz data-original atributa.
+        // Primjer:
+        // "100,50,200,150"
+        //
+        // split(",")
+        // pretvara string u niz:
+        // ["100", "50", "200", "150"]
+        //
+        // map(Number)
+        // pretvara stringove u brojeve:
+        // [100, 50, 200, 150]
         const originalCoords = area
             .dataset.original
             .split(",")
             .map(Number);
 
+        // Uzima shape atribut area elementa.
+        // To može biti:
+        // "poly"
+        // "circle"
+        // itd.
         const shape = area.shape;
 
+        // Prazan niz u koji ćemo spremiti
+        // nove skalirane koordinate.
         let scaledCoords = [];
 
 
+        // Provjerava da li je shape krug.
         if (shape === "circle") {
 
+            // Kreira nove skalirane koordinate za circle.
             scaledCoords = [
 
+                // Skalira X koordinatu centra kruga.
                 Math.round(originalCoords[0] * scaleX),
 
+                // Skalira Y koordinatu centra kruga.
                 Math.round(originalCoords[1] * scaleY),
 
+                // Skalira radius kruga.
+                //
+                // Koristi se Math.min(scaleX, scaleY)
+                // kako krug ne bi postao oval.
                 Math.round(
                     originalCoords[2] *
                     Math.min(scaleX, scaleY)
@@ -594,46 +645,83 @@ function resizeMapAreas() {
 
         } else {
 
+            // Ako nije circle,
+            // pretpostavlja se da je polygon.
+
+            // Petlja ide kroz koordinate po 2 elementa:
+            // x, y
+            //
+            // i += 2 znači:
+            // 0 -> 2 -> 4 -> 6 ...
             for (let i = 0; i < originalCoords.length; i += 2) {
 
+                // Skalira X koordinatu.
                 scaledCoords.push(
                     Math.round(originalCoords[i] * scaleX)
                 );
 
+                // Skalira Y koordinatu.
                 scaledCoords.push(
                     Math.round(originalCoords[i + 1] * scaleY)
                 );
             }
         }
 
+        // Pretvara niz koordinata nazad u string:
+        // [100, 50, 200, 150]
+        //
+        // postaje:
+        // "100,50,200,150"
+        //
+        // i postavlja ga kao nove coords.
         area.coords = scaledCoords.join(",");
     });
 }
 
 
 
+// Funkcija koja crta highlight preko SVG-a.
 function drawHighlight(area) {
 
+    // Briše prethodni highlight iz SVG-a.
     svg.innerHTML = "";
 
+    // Uzima trenutne coords iz area elementa.
+    //
+    // area.coords je string:
+    // "100,50,200,150"
+    //
+    // split i map pretvaraju ga u niz brojeva.
     const coords = area.coords
         .split(",")
         .map(Number);
 
+    // Uzima tip shape-a.
     const shape = area.shape;
 
 
 
+    // Ako je polygon.
     if (shape === "poly") {
 
+        // Prazan string za SVG points atribut.
         let points = "";
 
+        // Prolazi kroz koordinate po parovima.
         for (let i = 0; i < coords.length; i += 2) {
 
+            // Dodaje tačku u format:
+            // "x,y"
+            //
+            // Primjer:
+            // "100,50 200,150 300,250"
             points +=
                 `${coords[i]},${coords[i + 1]} `;
         }
 
+        // Ubacuje polygon element u SVG.
+        //
+        // points atribut definiše oblik poligona.
         svg.innerHTML = `
             <polygon points="${points}" />
         `;
@@ -641,8 +729,10 @@ function drawHighlight(area) {
 
 
 
+    // Ako je shape circle.
     if (shape === "circle") {
 
+        // Ubacuje SVG circle element.
         svg.innerHTML = `
             <circle
                 cx="${coords[0]}"
@@ -655,13 +745,20 @@ function drawHighlight(area) {
 
 
 
+// Prolazi kroz sve area elemente.
 areas.forEach(area => {
 
+    // Kada miš uđe u area zonu.
     area.addEventListener("mouseenter", () => {
+
+        // Crta highlight za taj area element.
         drawHighlight(area);
     });
 
+    // Kada miš napusti area zonu.
     area.addEventListener("mouseleave", () => {
+
+        // Briše highlight.
         svg.innerHTML = "";
     });
 
@@ -669,12 +766,19 @@ areas.forEach(area => {
 
 
 
+// Kada se stranica potpuno učita.
 window.addEventListener("load", resizeMapAreas);
 
+
+
+// Kada se prozor promijeni veličina.
 window.addEventListener("resize", () => {
 
+    // Ponovno scale-a sve coords.
     resizeMapAreas();
 
+    // Briše trenutni highlight
+    // da ne ostane pogrešno pozicioniran.
     svg.innerHTML = "";
 
 });
