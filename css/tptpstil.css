@@ -608,6 +608,38 @@ body.reduce-motion * {
     transition: 0.25s;
 }
 
+#liste ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#liste > ul > li {
+    background: var(--bg-card);
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary);
+    font-weight: 600;
+}
+
+#liste ul ul {
+    margin-top: 10px;
+    padding-left: 20px;
+}
+
+#liste ul ul li {
+    color: var(--text-muted);
+    font-weight: 400;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+#liste ul ul li::before {
+    content: "🎬";
+    margin-right: 8px;
+}
+
+
 /* ----------------------------- */
 /* --- DESNI SIDEBAR (VIDEO) --- */
 /* ----------------------------- */
@@ -1049,5 +1081,3 @@ footer p {
         font-size: 1.4rem;
     }
 }
-
-
