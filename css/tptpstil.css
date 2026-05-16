@@ -494,7 +494,54 @@ body.reduce-motion * {
 .kontakt-citat {
     margin-top: 20px;
 }
+.galerija-filmova {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
 
+.galerija-filmova img {
+    width: 100%;
+    height: 220px;        /* svi isti okvir */
+    object-fit: cover;    /* ključno: crop, ali bez deformacije */
+    border-radius: 12px;
+    transition: 0.3s;
+    border: 2px solid var(--glass);
+}
+
+.galerija-filmova img:hover {
+    transform: scale(1.05);
+    border-color: var(--primary);
+}
+.link-naslov {
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+.link-grupa {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.link-dugme {
+    display: block;
+    text-align: center;
+    padding: 5px 8px;
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.link-dugme:hover {
+    background: #b20710;
+    transform: translateY(-2px);
+}
 /* --- NAŠE MIŠLJENJE I TIPKA --- */
 .misljenje {
     margin-top: 10px;
@@ -627,7 +674,6 @@ body.reduce-motion * {
     font-size: 0.9rem;
     color: #a0a0a0;
 }
-
 /* -------------- */
 /* --- FOOTER --- */
 /* -------------- */
@@ -999,3 +1045,5 @@ footer p {
         font-size: 1.4rem;
     }
 }
+
+
