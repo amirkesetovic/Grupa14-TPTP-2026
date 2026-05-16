@@ -473,6 +473,19 @@ body.reduce-motion * {
     gap: 20px;
 }
 
+.film-tabela {
+    border: 1px solid var(--glass);
+    border-radius: 10px;
+    border-collapse: collapse;
+}
+
+.film-tabela th,
+.film-tabela td {
+    border: 1px solid var(--glass);
+    padding: 12px 15px;
+    text-align: left;
+}
+
 .kontakt-film-naslov {
     color: #e50914;
     margin-bottom: 15px;
