@@ -119,7 +119,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
         });
 
-        // Auto slide
         setInterval(() => {
 
             currentIndex++;
@@ -372,7 +371,7 @@ detaljiDugmad.forEach(dugme => {
         const film =
             dugme.dataset.film;
 
-        // SAKRI GLAVNI SADRŽAJ
+        // SAKRIJ GLAVNI SADRŽAJ
 
         heroSlider.style.display = "none";
 
@@ -382,7 +381,7 @@ detaljiDugmad.forEach(dugme => {
 
         recenzije.classList.remove("hidden");
 
-        // SAKRI SVE RECENZIJE
+        // SAKRIJ SVE RECENZIJE
 
         sveRecenzije.forEach(recenzija => {
 
@@ -463,6 +462,27 @@ if (accessibilityBtn && accessibilityPanel) {
     });
 
 }
+
+// ZATVARANJE MENIJA KLIKOM IZVAN NJEGA
+
+document.addEventListener("click", (e) => {
+
+    const klikNaDugme =
+        accessibilityBtn.contains(e.target);
+
+    const klikUnutarPanela =
+        accessibilityPanel.contains(e.target);
+
+    if (
+        !klikNaDugme &&
+        !klikUnutarPanela
+    ) {
+
+        accessibilityPanel.classList.add("hidden");
+
+    }
+
+});
 
 // FONT SIZE
 
