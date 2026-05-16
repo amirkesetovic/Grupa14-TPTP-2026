@@ -546,5 +546,137 @@ if (animationsBtn) {
     });
 
 }
+const image = document.getElementById("kino-mapa");
+
+const areas = document.querySelectorAll("area");
+
+const svg = document.querySelector(".map-highlight");
+
+const ORIGINAL_WIDTH = 530;
+const ORIGINAL_HEIGHT = 340;
+
+
+
+function resizeMapAreas() {
+
+    const currentWidth = image.clientWidth;
+    const currentHeight = image.clientHeight;
+
+    const scaleX = currentWidth / ORIGINAL_WIDTH;
+    const scaleY = currentHeight / ORIGINAL_HEIGHT;
+
+
+    areas.forEach(area => {
+
+        const originalCoords = area
+            .dataset.original
+            .split(",")
+            .map(Number);
+
+        const shape = area.shape;
+
+        let scaledCoords = [];
+
+
+        if (shape === "circle") {
+
+            scaledCoords = [
+
+                Math.round(originalCoords[0] * scaleX),
+
+                Math.round(originalCoords[1] * scaleY),
+
+                Math.round(
+                    originalCoords[2] *
+                    Math.min(scaleX, scaleY)
+                )
+            ];
+
+        } else {
+
+            for (let i = 0; i < originalCoords.length; i += 2) {
+
+                scaledCoords.push(
+                    Math.round(originalCoords[i] * scaleX)
+                );
+
+                scaledCoords.push(
+                    Math.round(originalCoords[i + 1] * scaleY)
+                );
+            }
+        }
+
+        area.coords = scaledCoords.join(",");
+    });
+}
+
+
+
+function drawHighlight(area) {
+
+    svg.innerHTML = "";
+
+    const coords = area.coords
+        .split(",")
+        .map(Number);
+
+    const shape = area.shape;
+
+
+
+    if (shape === "poly") {
+
+        let points = "";
+
+        for (let i = 0; i < coords.length; i += 2) {
+
+            points +=
+                `${coords[i]},${coords[i + 1]} `;
+        }
+
+        svg.innerHTML = `
+            <polygon points="${points}" />
+        `;
+    }
+
+
+
+    if (shape === "circle") {
+
+        svg.innerHTML = `
+            <circle
+                cx="${coords[0]}"
+                cy="${coords[1]}"
+                r="${coords[2]}"
+            />
+        `;
+    }
+}
+
+
+
+areas.forEach(area => {
+
+    area.addEventListener("mouseenter", () => {
+        drawHighlight(area);
+    });
+
+    area.addEventListener("mouseleave", () => {
+        svg.innerHTML = "";
+    });
+
+});
+
+
+
+window.addEventListener("load", resizeMapAreas);
+
+window.addEventListener("resize", () => {
+
+    resizeMapAreas();
+
+    svg.innerHTML = "";
+
+});
 
 });
