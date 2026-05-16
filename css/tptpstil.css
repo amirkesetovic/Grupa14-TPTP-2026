@@ -642,10 +642,15 @@ footer p {
 }
 
 .film-recenzija img {
+    display: block;
     width: 100%;
     max-width: 500px;
+    height: auto;
+
+    margin: 0 auto 25px auto;
+
     border-radius: 15px;
-    margin-bottom: 25px;
+    object-fit: cover;
 }
 
 .film-recenzija h1 {
@@ -742,6 +747,10 @@ footer p {
         grid-template-columns:
             repeat(auto-fill, minmax(220px, 1fr));
     }
+
+    .film-recenzija img {
+        max-width: 100%;
+    }
 }
 
 
@@ -752,13 +761,7 @@ footer p {
     .glavni-kontejner {
         grid-template-columns: 180px 1fr;
     }
-
-    /* DESNI SIDEBAR NESTAJE */
-
-    .desni-sidebar {
-        display: none;
-    }
-
+    
     .sadrzaj-filmova {
         grid-template-columns:
             repeat(auto-fill, minmax(220px, 1fr));
@@ -772,6 +775,10 @@ footer p {
 
     .slide-content h1 {
         font-size: 1.8rem;
+    }
+
+    .film-recenzija img {
+        max-width: 100%;
     }
 }
 
@@ -861,6 +868,11 @@ footer p {
         left: 15px;
         width: auto;
     }
+
+    /* DESNI SIDEBAR NESTAJE */
+    .desni-sidebar {
+        display: none;
+    }
 }
 
 
@@ -916,6 +928,10 @@ footer p {
     .sadrzaj-filmova {
         padding: 10px;
         gap: 15px;
+    }
+
+    .film-recenzija img {
+        border-radius: 10px;
     }
 }
 
