@@ -46,26 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (slides && slide.length > 0) {
 
-        // Sintaksa funkcije naučena od ChatGPT-a.
-        // Pozivom funkcije prvo pomjeramo slider uz pomoć slides.style.transform gdje
-        // `translateX(-${currentIndex * 100}%)` znači da se slider pomjera ulijevo za 100%
-        // širine po svakom indeksu. Zatim uklanjamo klasu "active" sa svih tačaka i
-        // dodajemo je samo onoj koja odgovara trenutnom indeksu.
-
-        
-        function updateSlider() {
-
-            slides.style.transform =
-                `translateX(-${currentIndex * 100}%)`;
-
-            dots.forEach(dot =>
-                dot.classList.remove("active")
-            );
-
-            dots[currentIndex].classList.add("active");
-
-        }
-
         // Sljedeći blok je napravljen pomoću ChatGPT-a. Za svaku sliku u slideru stvara tačku (dot)
         // ispod slidera, i dodaje event listener koji omogućava korisniku da klikom na tačku promijeni sliku.
         
@@ -90,6 +70,25 @@ document.addEventListener("DOMContentLoaded", () => {
         });
 
         const dots = document.querySelectorAll(".dot");
+
+        // Sintaksa funkcije naučena od ChatGPT-a.
+        // Pozivom funkcije prvo pomjeramo slider uz pomoć slides.style.transform gdje
+        // `translateX(-${currentIndex * 100}%)` znači da se slider pomjera ulijevo za 100%
+        // širine po svakom indeksu. Zatim uklanjamo klasu "active" sa svih tačaka i
+        // dodajemo je samo onoj koja odgovara trenutnom indeksu.
+
+        function updateSlider() {
+
+            slides.style.transform =
+                `translateX(-${currentIndex * 100}%)`;
+
+            dots.forEach(dot =>
+                dot.classList.remove("active")
+            );
+
+            dots[currentIndex].classList.add("active");
+
+        }
 
         nextBtn.addEventListener("click", () => {
 
@@ -292,7 +291,7 @@ if (forma) {
         if (telefon.value.trim() === "") {
 
             telefonGreska.textContent =
-                "Telefon je obavezan.";
+                "Telefon je obavezdan.";
 
             validnaForma = false;
 
@@ -383,13 +382,13 @@ detaljiDugmad.forEach(dugme => {
 
         // SAKRIJ GLAVNI SADRŽAJ
 
-        heroSlider.style.display = "none";
+        if (heroSlider) heroSlider.style.display = "none";
 
-        filmGrid.style.display = "none";
+        if (filmGrid) filmGrid.style.display = "none";
 
         // PRIKAŽI SEKCIJU RECENZIJA
 
-        recenzije.classList.remove("hidden");
+        if (recenzije) recenzije.classList.remove("hidden");
 
         // SAKRIJ SVE RECENZIJE
 
@@ -427,11 +426,11 @@ nazadDugmad.forEach(dugme => {
 
     dugme.addEventListener("click", () => {
 
-        heroSlider.style.display = "block";
+        if (heroSlider) heroSlider.style.display = "block";
 
-        filmGrid.style.display = "grid";
+        if (filmGrid) filmGrid.style.display = "grid";
 
-        recenzije.classList.add("hidden");
+        if (recenzije) recenzije.classList.add("hidden");
 
     });
 
@@ -477,19 +476,22 @@ if (accessibilityBtn && accessibilityPanel) {
 
 document.addEventListener("click", (e) => {
 
-    const klikNaDugme =
-        accessibilityBtn.contains(e.target);
+    if (accessibilityBtn && accessibilityPanel) {
 
-    const klikUnutarPanela =
-        accessibilityPanel.contains(e.target);
+        const klikNaDugme =
+            accessibilityBtn.contains(e.target);
 
-    if (
-        !klikNaDugme &&
-        !klikUnutarPanela
-    ) {
+        const klikUnutarPanela =
+            accessibilityPanel.contains(e.target);
 
-        accessibilityPanel.classList.add("hidden");
+        if (
+            !klikNaDugme &&
+            !klikUnutarPanela
+        ) {
 
+            accessibilityPanel.classList.add("hidden");
+
+        }
     }
 
 });
@@ -510,8 +512,10 @@ if (fontSlider) {
 
         fontSlider.value = savedFontSize;
 
-        fontValue.textContent =
-            `${savedFontSize}px`;
+        if (fontValue) {
+            fontValue.textContent =
+                `${savedFontSize}px`;
+        }
 
     }
 
@@ -522,8 +526,10 @@ if (fontSlider) {
         document.documentElement.style.fontSize =
             `${size}px`;
 
-        fontValue.textContent =
-            `${size}px`;
+        if (fontValue) {
+            fontValue.textContent =
+                `${size}px`;
+        }
 
         localStorage.setItem("fontSize", size);
 
@@ -574,6 +580,8 @@ const ORIGINAL_HEIGHT = 340;
 
 function resizeMapAreas() {
 
+    if (!image) return;
+
     // Trenutna širina prikazane slike u browseru.
     const currentWidth = image.clientWidth;
 
@@ -604,6 +612,8 @@ function resizeMapAreas() {
         // map(Number)
         // pretvara stringove u brojeve:
         // [100, 50, 200, 150]
+        if (!area.dataset.original) return;
+
         const originalCoords = area
             .dataset.original
             .split(",")
@@ -683,6 +693,8 @@ function resizeMapAreas() {
 // Funkcija koja crta highlight preko SVG-a.
 function drawHighlight(area) {
 
+    if (!svg) return;
+
     // Briše prethodni highlight iz SVG-a.
     svg.innerHTML = "";
 
@@ -759,7 +771,7 @@ areas.forEach(area => {
     area.addEventListener("mouseleave", () => {
 
         // Briše highlight.
-        svg.innerHTML = "";
+        if (svg) svg.innerHTML = "";
     });
 
 });
@@ -779,7 +791,7 @@ window.addEventListener("resize", () => {
 
     // Briše trenutni highlight
     // da ne ostane pogrešno pozicioniran.
-    svg.innerHTML = "";
+    if (svg) svg.innerHTML = "";
 
 });
 
@@ -814,5 +826,55 @@ window.addEventListener("resize", () => {
             }
         });
     });
+
+    // COUNTDOWN
+    // Blok koda prekopiran iz tutoriala i modifikovan sa Gemini AI-jem.
+
+
+    const tajmerElement = document.getElementById("countdown-tadc");
+
+    if (tajmerElement) {
+        // Godina, Mjesec (pazi: 5 je Juni, jer brojanje kreće od 0=Januar), Dan, Sati, Minuti
+        const datumPremijere = new Date(2026, 5, 4, 0, 0, 0).getTime();
+
+        function ažurirajTajmer() { // Ova funkcija se poziva odmah i svakih 1000ms (1 sekund) da ažurira prikaz tajmera.
+            const sada = new Date().getTime(); // Trenutno vrijeme u milisekundama.
+            const razlika = datumPremijere - sada; // Koliko vremena je ostalo do premijere.
+
+            if (razlika <= 0) { // Ako je vrijeme prošlo ili je sada, prikazujemo poruku da je film stigao u kina.
+                tajmerElement.innerHTML = "STIGLO U KINA!";
+                tajmerElement.style.color = "var(--primary)";
+                return true; 
+            }
+
+            // Računamo koliko je dana, sati, minuta i sekundi ostalo.
+            const dani = Math.floor(razlika / (1000 * 60 * 60 * 24));
+            const sati = Math.floor((razlika % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minuti = Math.floor((razlika % (1000 * 60 * 60)) / (1000 * 60));
+            const sekunde = Math.floor((razlika % (1000 * 60)) / 1000);
+
+            const prikazDana = dani > 0 ? `${dani}d ` : "";
+            const prikazSati = sati < 10 ? `0${sati}` : sati;
+            const prikazMinuta = minuti < 10 ? `0${minuti}` : minuti;
+            const prikazSekundi = sekunde < 10 ? `0${sekunde}` : sekunde;
+
+            // Ažuriramo HTML element sa formatom "Xd XXh XXm XXs".
+            tajmerElement.innerHTML = `${prikazDana}${prikazSati}h ${prikazMinuta}m ${prikazSekundi}s`;
+            return false;
+        }
+
+        // Prvo odmah pozivamo funkciju da prikaže početno stanje tajmera.
+        const done = ažurirajTajmer();
+
+        // Ako tajmer još nije gotov, postavljamo interval da se funkcija poziva svakih 1000ms (1 sekund) kako bi se tajmer ažurirao.
+        if (!done) {
+            const intervalTajmera = setInterval(() => {
+                const kraj = ažurirajTajmer();
+                if (kraj) {
+                    clearInterval(intervalTajmera);
+                }
+            }, 1000);
+        }
+    }
 
 });
