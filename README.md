@@ -78,7 +78,7 @@ Korišteni su media query breakpointi:
 
 ---
 
-# 🌙 Dark / Light mode
+#  Dark / Light mode
 
 Aplikacija podržava:
 - tamni mod
