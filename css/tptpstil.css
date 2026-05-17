@@ -1074,6 +1074,15 @@ footer p {
     .film-recenzija img {
         border-radius: 10px;
     }
+
+    #tabela {
+        overflow: hidden;
+    }
+
+    .film-tabela {
+        transform: scale(0.85);
+        transform-origin: top left;
+    }
 }
 
 
