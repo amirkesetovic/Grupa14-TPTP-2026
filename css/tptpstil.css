@@ -171,7 +171,28 @@ body.reduce-motion * {
     top: var(--header-height);
     height: calc(100vh - var(--header-height));
 }
+.lijevi-sidebar {
+    position: sticky;
+    top: var(--header-height);
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+}
 
+/* Firefox */
+.lijevi-sidebar {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary) transparent;
+}
+
+/* Chrome, Edge, Safari */
+.lijevi-sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.lijevi-sidebar::-webkit-scrollbar-thumb {
+    background-color: var(--primary);
+    border-radius: 3px;
+}
 .lijevi-sidebar h3 {
     margin-bottom: 20px;
     font-size: clamp(0.9rem, 1vw, 1.2rem);
