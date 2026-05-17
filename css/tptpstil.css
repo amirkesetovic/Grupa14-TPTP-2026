@@ -163,15 +163,8 @@ body.reduce-motion * {
 /* ---------------------- */
 .lijevi-sidebar {
     background: var(--bg-card);
-    padding:
-        clamp(15px, 2vw, 30px)
-        clamp(10px, 1.5vw, 20px); /* Padding kod od ChatGPT-a, prilagođava se veličini ekrana */
+    padding: clamp(15px, 2vw, 30px) clamp(10px, 1.5vw, 20px); 
     border-right: 1px solid var(--glass);
-    position: sticky;
-    top: var(--header-height);
-    height: calc(100vh - var(--header-height));
-}
-.lijevi-sidebar {
     position: sticky;
     top: var(--header-height);
     height: calc(100vh - var(--header-height));
@@ -497,6 +490,23 @@ body.reduce-motion * {
 
     min-width: 0;
 }
+/* Generisano uz pomoć AI (Gemini) za potrebe rješavanja problema 
+   vertikalnog poravnanja teksta
+*/
+#kontakt-forma .forma-grupa {
+    display: flex;
+    flex-direction: column;   
+    align-items: flex-start;  /* Poravnava i tekst i box uz lijevu ivicu */
+    margin-bottom: 15px;      /* Pravi razmak između polja forme */
+}
+
+#kontakt-forma .forma-grupa label {
+    margin-bottom: 5px;       /* Dodaje malo prostora između teksta i samog boxa */
+    font-weight: bold;        /* Podebljava tekst natpisa */
+}
+/* --- Kraj AI bloka --- */
+
+
 
 /* WRAPPER ZA RESPONSIVE TABELU */
 .tabela-wrapper {
