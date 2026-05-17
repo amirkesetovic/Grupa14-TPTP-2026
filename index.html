@@ -8,11 +8,15 @@
     <script src="js/tptpskripte.js" defer></script>
 </head>
 <body>
-
+        <!-- =========================
+         HEADER / ZAGLAVLJE
+         ========================= -->
     <header>
+        
         <div class="logo">
             <img src="images/CineLogoFinal.png" alt="CineGuide Logo" class="logo-slika">
         </div>
+        <!-- GLAVNA NAVIGACIJA -->
         <nav aria-label="Glavna navigacija">
             <ul>
                 <li><a href="index.html">Početna</a></li>
@@ -23,11 +27,10 @@
             </ul>
         </nav>
 
-
+        
 <div class="accessibility-panel hidden" id="accessibility-panel">
 
     <h3>Postavke pristupačnosti</h3>
-
     <div class="accessibility-option">
         <label for="font-size-slider">
             Veličina fonta
@@ -43,7 +46,6 @@
 
         <span id="font-size-value">16px</span>
     </div>
-
     <div class="accessibility-option">
         <button id="toggle-animations">
             Isključi animacije
@@ -52,18 +54,24 @@
 
 </div>
     </header>
+    <!-- =========================
+         GLAVNI KONTEJNER STRANICE
+         ========================= -->
     <div class="glavni-kontejner">
-        
+        <!-- =========================
+             LIJEVI SIDEBAR
+             ========================= -->
 <aside class="lijevi-sidebar">
+            <!-- DARK/LIGHT MODE PREKIDAČ -->
     <input type="checkbox" id="mode-toggle" class="mode-checkbox">
-
+            <!-- IKONE ZA MODE -->
     <label for="mode-toggle" class="slide-kontejner">
     <div class="ikona-omotac">
         <img src="images/lightmode.png" alt="Light" class="ikona-sunce">
         <img src="images/darkmode.png" alt="Dark" class="ikona-mesec">
     </div>
     </label>
-
+            <!-- KATEGORIJE FILMOVA -->
     <h3>Kategorije</h3>
     <ul>
         <li><a href="#" data-filter="sve">Sve</a></li>
@@ -76,12 +84,13 @@
         <li><a href="#" data-filter="triler">Triler</a></li>
     </ul>
 </aside>
-
+            <!-- =========================
+             CENTRALNI SADRŽAJ
+             ========================= -->
         <main class="sredisnji-sadrzaj">
 
-    <!-- HERO SLIDER -->
+            <!-- HERO SLIDER -->
     <section class="hero-slider">
-
         <button class="nav-btn prev">&#10094;</button>
         <button class="nav-btn next">&#10095;</button>
 
@@ -126,11 +135,14 @@
 
         <div class="dots"></div>
 
-    </section>
-
+    </section>                
+    <!-- =========================
+         FILMSKE KARTICE
+         ========================= -->
     <section class="sadrzaj-filmova">
 
             <article class="film-kartica" data-kategorija="akcija sve">
+  <!-- AI asistencija korištena za razumijevanje i implementaciju <picture> elementa za responzivne slike -->
     <picture>
         <source srcset="images/TG_poster.webp" type="image/webp">
         <img src="images/TG_poster.jpeg" alt="Top Gun Maverick akcioni film poster">
@@ -225,7 +237,8 @@
                 <img src="images/digitalcircus.jpeg" alt="The Amazing Digital Circus">
                 <div class="info">
                     <h3>The Amazing Digital Circus</h3>
-        
+             
+                    <!-- Uz pomoć AI alata objasnjena implementacija tajmera i interaktivnih elemenata -->
                     <div class="tajmer-kontejner">
                         <p class="tajmer-naslov-film">U kinima za:</p>
                         <div id="countdown-tadc" class="countdown-sat">Učitavanje...</div>
@@ -235,7 +248,9 @@
                 </div>
             </article>
         </section>
-
+                <!-- =========================
+                 RECENZIJE FILMOVA
+                 ========================= -->
             <section id="recenzije" class="hidden">
 
                 <article class="film-recenzija hidden" data-recenzija="topgun">
@@ -458,7 +473,7 @@
                             ← Nazad
                         </button>
 
-                        <img src="images/Obsesija_review.jpg" alt="Obesija" class="recenzija-slika">
+                        <img src="images/Obsesija_review.jpg" alt="Opsesija" class="recenzija-slika">
 
                         <h1>Opsesija</h1>
 
@@ -528,9 +543,13 @@
 
    
         </main>
-
+            <!-- =========================
+             DESNI SIDEBAR
+             ========================= -->
      <aside class="desni-sidebar">
     <h3 class="trailer-naslov">Trailer sedmice</h3>
+    <!-- AI asistencija(ChatGPT) korištena za implementaciju embedovanog videa koristeći kombinaciju YouTube linka 
+     i HTML5 <video> elementa -->
     <div class="video-okvir">
         <a href="https://www.youtube.com/watch?v=3zOLzsbOleM" target="_blank" rel="noopener">
             <video autoplay muted loop playsinline poster="images/video-placeholder.jpg" class="lokalni-video" style="width: 100%; border-radius: 8px;">
@@ -543,7 +562,9 @@
 </aside>
 
     </div>
-
+        <!-- =========================
+         FOOTER
+         ========================= -->
     <footer class="footer-glavni">
         <p>&copy; 2026 CineGuide. Sva prava zadržana.</p>
         <p class="footer-autori">Autori: Zara Bulić, Amir Kešetović, Amir Kavazović</p>
