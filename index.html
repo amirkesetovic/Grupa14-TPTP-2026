@@ -146,7 +146,14 @@
 
             <article class="film-kartica" data-kategorija="akcija sve">
   <!-- AI asistencija korištena za razumijevanje i implementaciju <picture> elementa za responzivne slike -->
-    <picture>
+        <!-- OBJAŠNJENJE:
+1. <picture> element omogućava prikaz različitih formata slike
+2. Browser prvo pokušava učitati <source> (u ovom slučaju WebP format)
+3. Ako browser ne podržava WebP, automatski prelazi na <img> fallback
+4. <img> služi kao osnovna (fallback) verzija slike
+5. alt atribut osigurava pristupačnost i opis slike
+Rezultat: bolja optimizacija, brže učitavanje i podrška za sve browser-e -->
+        <picture>
         <source srcset="images/TG_poster.webp" type="image/webp">
         <img src="images/TG_poster.jpeg" alt="Top Gun Maverick akcioni film poster">
     </picture>
@@ -242,6 +249,13 @@
                     <h3>The Amazing Digital Circus</h3>
              
                     <!-- Uz pomoć AI alata objasnjena implementacija tajmera i interaktivnih elemenata -->
+                    <!-- OBJAŠNJENJE:
+                    1. .tajmer-kontejner služi kao wrapper za cijeli countdown prikaz
+                    2. <p> element prikazuje statičan tekst "U kinima za:"
+                    3. <div id="countdown-tadc"> je mjesto gdje JavaScript upisuje vrijeme
+                    4. "Učitavanje..." je početni fallback tekst dok JS ne učita podatke
+                    5. JavaScript kasnije dinamički ažurira ovaj element (broji dane/sate/minute)
+                    Rezultat: interaktivni tajmer koji se automatski ažurira u realnom vremenu-->
                     <div class="tajmer-kontejner">
                         <p class="tajmer-naslov-film">U kinima za:</p>
                         <div id="countdown-tadc" class="countdown-sat">Učitavanje...</div>
@@ -253,6 +267,7 @@
         </section>
                 <!-- =========================
                  RECENZIJE FILMOVA
+                 (AI alati korišteni za kreiranje detaljnih recenzija filmova)
                  ========================= -->
             <section id="recenzije" class="hidden">
 
@@ -552,8 +567,17 @@
      <aside class="desni-sidebar">
     <h3 class="trailer-naslov">Trailer sedmice</h3>
     <!-- AI asistencija(ChatGPT) korištena za implementaciju embedovanog videa koristeći kombinaciju YouTube linka 
-     i HTML5 <video> elementa -->
-    <div class="video-okvir">
+    i HTML5 <video> elementa -->
+    <!-- OBJAŠNJENJE:
+1. <div class="video-okvir"> služi kao container za stilizaciju videa
+2. <a> tag povezuje video sa YouTube linkom (klik vodi na eksterni video)
+3. <video> HTML5 element prikazuje lokalni video u stranici
+4. autoplay, muted i loop omogućavaju automatsko i kontinuirano puštanje videa
+5. playsinline omogućava reprodukciju na mobilnim uređajima bez fullscreen moda
+6. poster prikazuje sliku prije nego što video krene
+7. <source> definiše video fajl koji se učitava u browseru
+Rezultat: kombinacija embedovanog YouTube linka i HTML5 videa za bolji prikaz-->
+        <div class="video-okvir">
         <a href="https://www.youtube.com/watch?v=3zOLzsbOleM" target="_blank" rel="noopener">
             <video autoplay muted loop playsinline poster="images/video-placeholder.jpg" class="lokalni-video" style="width: 100%; border-radius: 8px;">
                 <source src="images/tvoj-video.mp4" type="video/mp4">

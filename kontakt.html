@@ -61,17 +61,25 @@
 
 </div>
     </header>
+
     <!-- =========================
      GLAVNI KONTEJNER STRANICE
      ========================= -->
-    <div class="glavni-kontejner">
+    
+     <div class="glavni-kontejner">
+    
         <!-- =========================
          LIJEVI SIDEBAR
          ========================= -->
-        <aside class="lijevi-sidebar">
-        <!-- DARK/LIGHT MODE PREKIDAČ -->
+    
+         <aside class="lijevi-sidebar">
+    
+            <!-- DARK/LIGHT MODE PREKIDAČ -->
+    
             <input type="checkbox" id="mode-toggle" class="mode-checkbox">
-        <!-- IKONE ZA MODE -->
+    
+            <!-- IKONE ZA MODE -->
+    
             <label for="mode-toggle" class="slide-kontejner">
             <div class="ikona-omotac">
                     <img src="images/lightmode.png" alt="Light" class="ikona-sunce">
@@ -108,6 +116,15 @@
                  KONTAKT FORMA
                  (AI: pomoć pri kreiranju strukture
                      i organizaciji kontakt forme (polja, validacija i raspored elemenata))
+                     OBJAŠNJENJE:
+                    1. <form> definiše kontakt formu (novalidate isključuje default browser validaciju)
+                    2. Svaka .forma-grupa sadrži jedno input polje + label + mjesto za grešku
+                    3. input polja (ime, prezime, email, telefon) prikupljaju korisničke podatke
+                    4. select omogućava izbor teme upita
+                    5. textarea služi za unos duže poruke
+                    6. span.greska koristi JavaScript za prikaz validacijskih poruka
+                    7. autocomplete poboljšava UX automatskim popunjavanjem podataka
+                    Rezultat: strukturisana forma sa pripremljenom validacijom i boljim korisničkim iskustvom
                     ========================= -->
 
                 <form id="kontakt-forma" novalidate> 
@@ -210,8 +227,9 @@
            target="_blank" class="link-dugme">
             CineStar
         </a>
-          </aside>
            </div>
+        </aside>
+        </div>
     <!-- =========================
      FOOTER
      ========================= -->

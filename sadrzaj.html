@@ -178,8 +178,18 @@
 <section id="galerija" class="kontakt-sekcija">
 
     <h2>Galerija filmova</h2>
+
     <!-- ChatGPT: pomoć pri organizaciji galerije i strukture linkovanih slika -->
-    <div class="galerija-filmova">
+<!-- OBJAŠNJENJE:
+1. .galerija-filmova služi kao container za sve slike
+2. Svaka <a> oznaka povezuje sliku sa eksternim IMDb linkom
+3. target="_blank" otvara film u novom tabu
+4. <img> prikazuje poster/thumbnail filma
+5. alt atribut poboljšava pristupačnost i SEO
+6. Klik na sliku vodi korisnika na detalje o filmu
+Rezultat: interaktivna galerija filmova sa linkovanim slikama-->
+    
+<div class="galerija-filmova">
 
         <a href="https://www.imdb.com/title/tt1745960/" target="_blank">
             <img src="images/TG_poster.jpeg" alt="akcijski scena">
@@ -226,6 +236,15 @@
         o sadržaju i ponudi CineStar kina u Tuzli.
     </p>
     <!-- ChatGPT: pomoć pri implementaciji image map i koordinata -->
+     <!--OBJAŠNJENJE:
+1. <map> definiše interaktivnu mapu povezanu sa slikom
+2. <area> elementi označavaju klikabilne dijelove slike
+3. shape (poly/circle) određuje oblik klikabilne zone
+4. coords definišu tačne koordinate područja na slici
+5. href vodi korisnika na odgovarajuće stranice
+6. target="_blank" otvara link u novom tabu
+7. alt i title poboljšavaju pristupačnost i opis funkcije
+Rezultat: interaktivna slika sa više klikabilnih zona koje vode na različite sadržaje-->
     <div class="map-wrapper">
 
         <img
