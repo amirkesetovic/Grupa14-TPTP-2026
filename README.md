@@ -10,7 +10,7 @@ Projekat predstavlja modernu web lokaciju za pregled filmskih recenzija, preporu
 | Član | Index | GitHub | Zadatak |
 |---|---|---|---|
 | Bulić Zara | 25134 | zarabulic | HTML |
-| Kavazović Amir | 25xxx | username | CSS |
+| Kavazović Amir | 25058 | username | CSS |
 | Kešetović Amir | 25006 | amirkesetovic | JavaScript |
 
 # Kratak opis projekta:
