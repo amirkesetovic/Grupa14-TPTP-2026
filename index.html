@@ -131,7 +131,10 @@
     <section class="sadrzaj-filmova">
 
             <article class="film-kartica" data-kategorija="akcija sve">
-                <picture><img src="images/TG_poster.jpeg" alt="Top Gun">  </picture>
+               <picture>
+    
+    <img src="images/TG_poster.jpeg" alt="Top Gun">
+</picture>
                 <div class="info">
                     <h3>Top Gun + Top Gun Maverick</h3>
                     <p>Akcioni klasik i njegov savremeni nastavak koji su osvojili publiku.</p>
@@ -298,8 +301,7 @@
                         <button class="nazad-btn detalji-btn">
                             ← Nazad
                         </button>
-
-                        <img src="images/Michael_review.webp" alt="Michael" class="recenzija-slika">
+           <img src="images/Michael_review.webp" alt="Michael" class="recenzija-slika">
 
                         <h1>Michael</h1>
 
@@ -455,9 +457,9 @@
 
                         <img src="images/Obsesija_review.jpg" alt="Obesija" class="recenzija-slika">
 
-                        <h1>Obesija</h1>
+                        <h1>Opsesija</h1>
 
-                        <p> Obsesija je psihološki horor koji uspijeva spojiti romansu, nelagodu i supernatural elemente na prilično originalan način. 
+                        <p> Opsesija je psihološki horor koji uspijeva spojiti romansu, nelagodu i supernatural elemente na prilično originalan način. 
                             Priča prati povučenog mladića koji poželi da se njegova simpatija zaljubi u njega — ali kada mu se želja ostvari, situacija 
                             brzo postaje opsesivna i zastrašujuća.
 
@@ -524,19 +526,32 @@
    
         </main>
 
-        <aside class="desni-sidebar">
-            <h3 class="trailer-naslov">Trailer sedmice</h3>
-            <div class="video-okvir">
-                
-                <a href="https://www.youtube.com/watch?v=3zOLzsbOleM" target="_blank">
-                    
-                    <video autoplay muted loop playsinline poster="images/video-placeholder.jpg" class="lokalni-video">
-                        <source src="images/tvoj-video.mp4" type="video/mp4">
-                    </video>
-                </a>
-            </div>
-            <p class="trailer-opis">Najnoviji trailer za hit godine.</p>
-        </aside>
+     <aside class="desni-sidebar">
+    <h3 class="trailer-naslov">Trailer sedmice</h3>
+    <div class="video-okvir">
+        <a href="https://www.youtube.com/watch?v=3zOLzsbOleM" target="_blank" rel="noopener">
+            <video autoplay muted loop playsinline poster="images/video-placeholder.jpg" class="lokalni-video">
+                <source src="images/tvoj-video.mp4" type="video/mp4">
+                Vaš pretraživač ne podržava video element.
+            </video>
+        </a>
+    </div>
+    <p class="trailer-opis">Najnoviji trailer za hit godine.</p>
+
+    <h3 class="lokacija-naslov" style="margin-top: 20px;">Gdje gledati?</h3>
+    <div class="mapa-okvir">
+        <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2870.325960485987!2d18.675688!3d44.539213!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x475bfe54460b64db%3A0x673e4db1262d4715!2sCineStar%20Tuzla!5e0!3m2!1sbs!2sba!4v1715000000000!5m2!1sbs!2sba" 
+            width="100%" 
+            height="150" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="CineStar Kino Lokacija">
+        </iframe>
+    </div>
+</aside>
 
     </div>
 
