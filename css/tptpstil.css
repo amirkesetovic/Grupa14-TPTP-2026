@@ -499,7 +499,10 @@ body.reduce-motion * {
 /* WRAPPER ZA RESPONSIVE TABELU */
 .tabela-wrapper {
     width: 100%;
+    max-width: 100%;
     overflow-x: auto;
+    -webkit-overflow-scrolling: touch; /* Nauceno sa Gemini AI, scrollanje se na mobile radi uz touch */
+    margin-bottom: 20px;
 }
 
 /* TABELA */
@@ -1025,6 +1028,25 @@ footer p {
     /* DESNI SIDEBAR NESTAJE */
     .desni-sidebar {
         display: none;
+    }
+
+    .glavni-kontejner {
+        display: block;
+        width: 100%;
+        overflow-x: hidden;
+    }
+    
+    .kontakt-sadrzaj {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+        padding: 10px;
+    }
+
+    .kontakt-sekcija {
+        padding: 20px 15px;
+        width: 100%;
+        max-width: 100%;
     }
 }
 
