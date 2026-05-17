@@ -492,10 +492,21 @@ body.reduce-motion * {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     min-width: 0;
 }
 
+/* WRAPPER ZA RESPONSIVE TABELU */
+.tabela-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* TABELA */
 .film-tabela {
+    width: 100%;
+    min-width: 600px;
+
     border: 1px solid var(--glass);
     border-radius: 10px;
     border-collapse: collapse;
@@ -808,15 +819,6 @@ footer p {
 
 .nazad-btn {
     margin-bottom: 30px;
-}
-
-.tabela-wrapper {
-    width: 100%;
-    overflow-x: auto;
-}
-
-.film-tabela {
-    min-width: 600px;
 }
 
 /* --------------------- */
