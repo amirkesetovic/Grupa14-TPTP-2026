@@ -852,12 +852,12 @@ window.addEventListener("resize", () => {
         }
 
         // Prvo odmah pozivamo funkciju da prikaže početno stanje tajmera.
-        const done = ažurirajTajmer();
+        const done = azurirajTajmer();
 
         // Ako tajmer još nije gotov, postavljamo interval da se funkcija poziva svakih 1000ms (1 sekund) kako bi se tajmer ažurirao.
         if (!done) {
             const intervalTajmera = setInterval(() => {
-                const kraj = ažurirajTajmer();
+                const kraj = azurirajTajmer();
                 if (kraj) {
                     clearInterval(intervalTajmera);
                 }
