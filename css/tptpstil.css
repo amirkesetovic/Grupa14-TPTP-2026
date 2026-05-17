@@ -893,6 +893,19 @@ footer p {
     .film-recenzija img {
         max-width: 100%;
     }
+
+    .galerija-filmova {
+        grid-template-columns: 1fr;
+    }
+
+    #tabela {
+        overflow-x: auto;
+    }
+
+    .film-tabela {
+        width: 100%;
+        min-width: 500px;
+    }
 }
 
 
@@ -1074,19 +1087,6 @@ footer p {
 
     .film-recenzija img {
         border-radius: 10px;
-    }
-
-    .galerija-filmova {
-        grid-template-columns: 1fr;
-    }
-
-    #tabela {
-        overflow-x: auto;
-    }
-
-    .film-tabela {
-        width: 100%;
-        min-width: 500px;
     }
 }
 
