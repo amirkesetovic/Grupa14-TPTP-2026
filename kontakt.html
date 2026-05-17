@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="bs">
 <head>
+    <!-- =========================
+     META PODACI STRANICE
+     ========================= -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CineGuide - Kontakt</title>
@@ -9,12 +12,14 @@
 </head>
 
 <body>
-
+<!-- =========================
+     HEADER / ZAGLAVLJE
+     ========================= -->
     <header>
         <div class="logo">
             <img src="images/CineLogoFinal.png" alt="CineGuide Logo" class="logo-slika">
         </div>
-
+        <!-- GLAVNA NAVIGACIJA -->
         <nav>
             <ul>
                 <li><a href="index.html">Početna</a></li>
@@ -25,7 +30,9 @@
             </ul>
         </nav>
 
-            <!-- ACCESSIBILITY PANEL -->
+            <!-- =========================
+         ACCESSIBILITY PANEL
+         ========================= -->
 <div class="accessibility-panel hidden" id="accessibility-panel">
 
     <h3>Postavke pristupačnosti</h3>
@@ -54,12 +61,17 @@
 
 </div>
     </header>
-
+    <!-- =========================
+     GLAVNI KONTEJNER STRANICE
+     ========================= -->
     <div class="glavni-kontejner">
+        <!-- =========================
+         LIJEVI SIDEBAR
+         ========================= -->
         <aside class="lijevi-sidebar">
-
+        <!-- DARK/LIGHT MODE PREKIDAČ -->
             <input type="checkbox" id="mode-toggle" class="mode-checkbox">
-
+        <!-- IKONE ZA MODE -->
             <label for="mode-toggle" class="slide-kontejner">
             <div class="ikona-omotac">
                     <img src="images/lightmode.png" alt="Light" class="ikona-sunce">
@@ -68,7 +80,7 @@
             </label>
 
             <h3>Kategorije upita</h3>
-
+            <!-- KATEGORIJE KONTAKT FORME -->
             <ul>
                 <li><a href="#">Preporuka filma</a></li>
                 <li><a href="#">Recenzija</a></li>
@@ -79,7 +91,9 @@
 
         </aside>
 
-        <!-- GLAVNI SADRZAJ -->
+        <!-- =========================
+         GLAVNI SADRŽAJ - KONTAKT FORMA
+         ========================= -->
         <main class="kontakt-sadrzaj">
 
             <section class="kontakt-sekcija">
@@ -90,6 +104,11 @@
                     Imate preporuku za film, želite poslati svoju recenziju
                     ili prijaviti problem na stranici? Javite nam se putem forme ispod.
                 </p>
+                <!-- =========================
+                 KONTAKT FORMA
+                 (AI: pomoć pri kreiranju strukture
+                     i organizaciji kontakt forme (polja, validacija i raspored elemenata))
+                    ========================= -->
 
                 <form id="kontakt-forma" novalidate> 
                     <div class="forma-grupa">
@@ -162,7 +181,10 @@
                 </div>
                 </section>
          </main>
-
+            <!-- =========================
+            DESNI SIDEBAR - FILM SEDMICE
+            (AI(ChatGPT) korišten pri odabiru i prezentaciji "Filma sedmice" na desnom sidebaru, uključujući kratak opis)
+            ========================= -->
         <aside class="desni-sidebar">
             <h3 class="kontakt-film-naslov">Film sedmice</h3>
 
@@ -190,7 +212,9 @@
         </a>
           </aside>
            </div>
-    
+    <!-- =========================
+     FOOTER
+     ========================= -->
     <footer class="footer-glavni">
         <p>&copy; 2026 CineGuide. Sva prava zadržana.</p>
         <p class="footer-autori">Autori: Zara Bulić, Amir Kešetović, Amir Kavazović</p>
