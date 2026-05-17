@@ -440,6 +440,7 @@ body.reduce-motion * {
     transition: 0.4s;
     display: flex;
     flex-direction: column;
+    animation: prikaziKarticu 0.6s ease-out forwards;
 }
 
 .film-kartica:hover {
@@ -860,12 +861,6 @@ footer p {
         opacity: 1;
         transform: translateY(0);
     }
-}
-
-/* --- Primjena animacije na kartice filmova --- */
-.film-kartica {
-    /* ... tvoji postojeći stilovi ... */
-    animation: prikaziKarticu 0.6s ease-out forwards;
 }
 
 
