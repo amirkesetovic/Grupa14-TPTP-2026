@@ -530,6 +530,23 @@ body.reduce-motion * {
 .kontakt-citat {
     margin-top: 20px;
 }
+
+/* Generisano uz pomoć AI (Gemini) za potrebe rješavanja problema
+   vertikalnog poravnanja teksta
+*/
+#kontakt-forma .forma-grupa {
+    display: flex;
+    flex-direction: column;  
+    align-items: flex-start;  /* Poravnava i tekst i box uz lijevu ivicu */
+    margin-bottom: 15px;      /* Pravi razmak između polja forme */
+}
+
+#kontakt-forma .forma-grupa label {
+    margin-bottom: 5px;       /* Dodaje malo prostora između teksta i samog boxa */
+    font-weight: bold;        /* Podebljava tekst natpisa */
+}
+/* --- Kraj AI bloka --- */
+
 .galerija-filmova {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
