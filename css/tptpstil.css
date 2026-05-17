@@ -56,12 +56,12 @@ header {
 
 .logo {
     display: flex;
-    align-items: center; /* Centriranje slike vertikalno */
+    align-items: center;
 }
 
 .logo-slika {
     max-height: 60px;
-    width: auto;      /* Automatska širina radi očuvanja proporcija */
+    width: auto;
 }
 
 header nav ul {
@@ -85,19 +85,12 @@ header nav ul li a:hover {
     position: absolute;
     top: 90px;
     right: 40px;
-
     width: 320px;
-
     background: var(--bg-card);
-
     border: 1px solid var(--glass);
-
     border-radius: 15px;
-
     padding: 20px;
-
     z-index: 2000;
-
     box-shadow: 0 10px 25px rgba(0,0,0,0.4);
 }
 
@@ -126,17 +119,12 @@ header nav ul li a:hover {
 .accessibility-option button {
     width: 100%;
     padding: 10px;
-
     border: none;
     border-radius: 8px;
-
     background: var(--primary);
     color: white;
-
     cursor: pointer;
-
     font-weight: 600;
-
     transition: 0.3s;
 }
 
@@ -171,20 +159,26 @@ body.reduce-motion * {
     overflow-y: auto;
 }
 
-/* --- SCROLLBAR --- */
+/* =========================================================================
+     AI BLOK (1/5): KREIRANJE PRILAGOĐENOG SCROLLBARA ZA LIJEVI SIDEBAR
+     Ovaj blok koda kontroliše izgled klizača (scrollbar) unutar kategorija.
+     ========================================================================= */
 .lijevi-sidebar {
-    scrollbar-width: thin;
-    scrollbar-color: var(--primary) transparent;
+    scrollbar-width: thin;                        /* Za Firefox: Postavlja užu, diskretniju širinu skrolera */
+    scrollbar-color: var(--primary) transparent;   /* Za Firefox: Boja klizača je crvena, a pozadina trake prozirna */
 }
 
 .lijevi-sidebar::-webkit-scrollbar {
-    width: 6px;
+    width: 6px;                                   /* Za Chrome/Safari/Edge: Definiše fiksnu širinu scrollbara od 6 piksela */
 }
 
 .lijevi-sidebar::-webkit-scrollbar-thumb {
-    background-color: var(--primary);
-    border-radius: 3px;
+    background-color: var(--primary);             /* Za Chrome/Safari/Edge: Boja samog pokretnog klizača postaje crvena */
+    border-radius: 3px;                           /* Za Chrome/Safari/Edge: Zaobljuje ivice pokretnog dijela da izgleda moderno */
 }
+/* =========================================================================
+     KRAJ AI BLOKA ZA SCROLLBAR
+     ========================================================================= */
 
 .lijevi-sidebar h3 {
     margin-bottom: 20px;
@@ -221,19 +215,6 @@ body.reduce-motion * {
 }
 
 .slide-kontejner {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 10px 15px;
-    background: var(--glass);
-    border-radius: 50px;
-    cursor: pointer;
-    width: fit-content;
-    margin-bottom: 25px;
-    transition: 0.3s;
-}
-
-.slide-kontejner {
     width: 80px;
     height: 40px;
     background: var(--glass);
@@ -246,68 +227,51 @@ body.reduce-motion * {
     transition: 0.3s;
 }
 
-.ikona-omotac {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transition: 0.3s ease;
-    position: relative;
-}
-
+/* =========================================================================
+     AI BLOK (2/5): INTERAKTIVNI SIBLING (+) SELEKTOR ZA PROMJENU MODA (IKONE)
+     Ovaj blok koristi CSS logiku umjesto JavaScripta za pomjeranje i animaciju ikona sunca i mjeseca.
+     ========================================================================= */
 #mode-toggle:checked + .slide-kontejner .ikona-omotac {
-    justify-content: flex-end;
-}
-
-.ikona-omotac {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    transition: 0.3s ease;
+    justify-content: flex-end;     /* Kada je checkbox označen (:checked), gura unutrašnji sadržaj (ikone) na desnu stranu */
 }
 
 .ikona-sunce,
 .ikona-mesec {
-    width: 28px;
-    height: 28px;
-    transition: 0.3s ease;
+    width: 28px;                  /* Postavlja fiksnu širinu za obje ikone modova */
+    height: 28px;                 /* Postavlja fiksnu visinu za obje ikone modova */
+    transition: 0.3s ease;        /* Omogućava glatko prelijevanje i animaciju promjene veličine u trajanju od 0.3 sekunde */
 }
 
 .ikona-sunce {
-    opacity: 1;
-    transform: scale(1);
-    filter: invert(1);
+    opacity: 1;                   /* Po defaultu (Dark mode), ikona sunca je potpuno vidljiva */
+    transform: scale(1);          /* Ikona sunca je u svojoj prirodnoj veličini */
+    filter: invert(1);            /* Obrće boje slike kako bi crna ikona postala bijela i vidljiva na tamnoj pozadini */
 }
 
 .ikona-mesec {
-    opacity: 0;
-    transform: scale(0);
+    opacity: 0;                   /* Po defaultu, ikona mjeseca je potpuno nevidljiva */
+    transform: scale(0);          /* Smanjuje ikonu mjeseca na nulu (sakriva je fizički) */
 }
 
 #mode-toggle:checked + .slide-kontejner .ikona-sunce {
-    opacity: 0;
-    transform: scale(0);
+    opacity: 0;                   /* Kada kliknemo (Light mode), ikona sunca glatko nestaje */
+    transform: scale(0);          /* Istovremeno se smanjuje na veličinu 0 */
 }
 
 #mode-toggle:checked + .slide-kontejner .ikona-mesec {
-    opacity: 1;
-    transform: scale(1);
+    opacity: 1;                   /* Kada kliknemo, ikona mjeseca postaje 100% vidljiva */
+    transform: scale(1);          /* Vraća se u svoju punu prirodnu veličinu */
 }
+/* =========================================================================
+     KRAJ AI BLOKA ZA SMJENU MODA
+     ========================================================================= */
 
-#mode-toggle:checked + .slide-kontejner .ikona-omotac {
-    justify-content: flex-end;
-}
-
-/* --- AKTIVAN FILTER KATEGORIJA --- */
 .aktivan-filter {
     background: var(--primary);
     color: white !important;
 }
 
-/* ------------------------------- */
-/* --- SREDINA - MREŽA FILMOVA --- */
-/* ------------------------------- */
+/* --- HERO SLIDER --- */
 .hero-slider {
     position: relative;
     width: 100%;
@@ -329,14 +293,7 @@ body.reduce-motion * {
     position: relative;
 }
 
-.slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: brightness(45%);
-}
-
-.slide-video {
+.slide img, .slide-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -382,13 +339,8 @@ body.reduce-motion * {
     background: rgba(0,0,0,0.8);
 }
 
-.prev {
-    left: 20px;
-}
-
-.next {
-    right: 20px;
-}
+.prev { left: 20px; }
+.next { right: 20px; }
 
 .dots {
     position: absolute;
@@ -409,9 +361,7 @@ body.reduce-motion * {
     transition: 0.3s;
 }
 
-.dot.active {
-    background: white;
-}
+.dot.active { background: white; }
 
 .sredisnji-sadrzaj {
     display: flex;
@@ -466,118 +416,84 @@ body.reduce-motion * {
     font-size: 0.9rem;
 }
 
-/* --- ZVJEZDICE I BROJČANA OCJENA --- */
-.rating {
-    margin-top: 10px;
-}
-
-.stars {
-    color: var(--gold);
-    letter-spacing: 1px;
-}
-
-.ocjena-broj {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-left: 5px;
-}
+.rating { margin-top: 10px; }
+.stars { color: var(--gold); letter-spacing: 1px; }
+.ocjena-broj { color: var(--text-muted); font-size: 0.85rem; margin-left: 5px; }
 
 .kontakt-sekcija { 
     padding: 40px;
     display: flex;
     flex-direction: column;
     gap: 20px;
-
     min-width: 0;
 }
-/* Generisano uz pomoć AI (Gemini) za potrebe rješavanja problema 
-   vertikalnog poravnanja teksta
-*/
+
+/* =========================================================================
+     AI BLOK (3/5): VERTIKALNO PORAVNANJE ELEMENATA UNUTAR KONTAKT FORME
+     Rješava problem poravnanja labela i ulaznih polja (inputa) jedno ispod drugog.
+     ========================================================================= */
 #kontakt-forma .forma-grupa {
-    display: flex;
-    flex-direction: column;   
-    align-items: flex-start;  /* Poravnava i tekst i box uz lijevu ivicu */
-    margin-bottom: 15px;      /* Pravi razmak između polja forme */
+    display: flex;                /* Aktivira flexbox model nad svakim pojedinačnim redom u formi */
+    flex-direction: column;       /* Okreće raspored elemenata po vertikali, tako da je natpis IZNAD polja za kucanje */
+    align-items: flex-start;      /* Prisiljava i natpis i tekstualni box da se striktno poravnaju uz lijevu ivicu */
+    margin-bottom: 15px;          /* Pravi čist vertikalni razmak od 15 piksela između različitih polja forme */
 }
 
 #kontakt-forma .forma-grupa label {
-    margin-bottom: 5px;       /* Dodaje malo prostora između teksta i samog boxa */
-    font-weight: bold;        /* Podebljava tekst natpisa */
+    margin-bottom: 5px;           /* Dodaje mali prostor od 5px između teksta natpisa i samog okvira za unos podataka */
+    font-weight: bold;            /* Podebljava tekst labela kako bi korisnik lakše uočio šta treba unijeti */
 }
-/* --- Kraj AI bloka --- */
+/* =========================================================================
+     KRAJ AI BLOKA ZA FORMUR
+     ========================================================================= */
 
-
-
-/* WRAPPER ZA RESPONSIVE TABELU */
 .tabela-wrapper {
     width: 100%;
     max-width: 100%;
     overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Nauceno sa Gemini AI, scrollanje se na mobile radi uz touch */
+    -webkit-overflow-scrolling: touch; 
     margin-bottom: 20px;
 }
 
-/* TABELA */
 .film-tabela {
     width: 100%;
     min-width: 600px;
-
     border: 1px solid var(--glass);
     border-radius: 10px;
     border-collapse: collapse;
 }
 
-.film-tabela th,
-.film-tabela td {
+.film-tabela th, .film-tabela td {
     border: 1px solid var(--glass);
     padding: 12px 15px;
     text-align: left;
 }
 
-.kontakt-film-naslov {
-    color: #e50914;
-    margin-bottom: 15px;
-}
+.kontakt-film-naslov { color: #e50914; margin-bottom: 15px; }
+.kontakt-citat { margin-top: 20px; }
 
-.kontakt-citat {
-    margin-top: 20px;
-}
 .galerija-filmova {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 15px;
     margin-top: 20px;
 }
-.galerija-filmova a {
-    display: block;
-    overflow: hidden;
-    border-radius: 12px;
-}
+.galerija-filmova a { display: block; overflow: hidden; border-radius: 12px; }
 .galerija-filmova img {
     width: 100%;
-    height: 220px;        /* svi isti okvir */
-    object-fit: cover;    /* crop, ali bez deformacije */
+    height: 220px;
+    object-fit: cover;
     border-radius: 12px;
     transition: 0.3s;
     border: 2px solid var(--glass);
 }
-
 .galerija-filmova img:hover {
     transform: scale(1.05);
     border-color: var(--primary);
 }
-.link-naslov {
-    margin-bottom: 10px;
-    font-weight: 600;
-    color: var(--text-muted);
-}
 
-.link-grupa {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
+.link-naslov { margin-bottom: 10px; font-weight: 600; color: var(--text-muted); }
+.link-grupa { display: flex; flex-direction: column; gap: 10px; }
 .link-dugme {
     display: block;
     text-align: center;
@@ -589,18 +505,12 @@ body.reduce-motion * {
     transition: 0.3s;
     font-weight: 500;
 }
-
 .link-dugme:hover {
     background: #b20710;
     transform: translateY(-2px);
 }
-/* --- NAŠE MIŠLJENJE I TIPKA --- */
-.misljenje {
-    margin-top: 10px;
-    font-size: 0.85rem;
-    line-height: 1.4;
-}
 
+.misljenje { margin-top: 10px; font-size: 0.85rem; line-height: 1.4; }
 .detalji-btn {
     display: block;
     background-color: var(--primary);
@@ -609,58 +519,25 @@ body.reduce-motion * {
     text-decoration: none;
     padding: 12px;
     border-radius: 8px;
-    margin-top: auto; /* Gura tipku na dno kartice */
+    margin-top: auto;
     font-weight: 600;
     transition: 0.3s;
 }
+.detalji-btn:hover { background-color: #b20710; }
 
-.detalji-btn:hover {
-    background-color: #b20710;
-}
+.map-wrapper { position: relative; width: 100%; max-width: 530px; }
+.interaktivna-mapa { display: block; width: 100%; height: auto; border-radius: 15px; }
+.map-highlight { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; }
 
-.map-wrapper {
-    position: relative;
-    width: 100%;
-    max-width: 530px;
-}
-
-.interaktivna-mapa {
-    display: block;
-    width: 100%;
-    height: auto;
-    border-radius: 15px;
-}
-
-.map-highlight {
-    position: absolute;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100%;
-
-    pointer-events: none;
-}
-
-.map-highlight polygon,
-.map-highlight circle {
-
+.map-highlight polygon, .map-highlight circle {
     fill: rgba(229, 9, 20, 0.35);
-
     stroke: #e50914;
     stroke-width: 3;
-
-    filter:
-        drop-shadow(0 0 8px rgba(229, 9, 20, 0.8));
-
+    filter: drop-shadow(0 0 8px rgba(229, 9, 20, 0.8));
     transition: 0.25s;
 }
 
-#liste ul {
-    list-style: none;
-    padding-left: 0;
-}
-
+#liste ul { list-style: none; padding-left: 0; }
 #liste > ul > li {
     background: var(--bg-card);
     padding: 15px 20px;
@@ -669,33 +546,14 @@ body.reduce-motion * {
     border-left: 4px solid var(--primary);
     font-weight: 600;
 }
+#liste ul ul { margin-top: 10px; padding-left: 20px; }
+#liste ul ul li { color: var(--text-muted); font-weight: 400; margin-bottom: 5px; position: relative; }
+#liste ul ul li::before { content: "🎬"; margin-right: 8px; }
 
-#liste ul ul {
-    margin-top: 10px;
-    padding-left: 20px;
-}
-
-#liste ul ul li {
-    color: var(--text-muted);
-    font-weight: 400;
-    margin-bottom: 5px;
-    position: relative;
-}
-
-#liste ul ul li::before {
-    content: "🎬";
-    margin-right: 8px;
-}
-
-
-/* ----------------------------- */
-/* --- DESNI SIDEBAR (VIDEO) --- */
-/* ----------------------------- */
+/* --- DESNI SIDEBAR --- */
 .desni-sidebar {
     background: var(--bg-card);
-    padding:
-        clamp(15px, 2vw, 30px)
-        clamp(10px, 1.5vw, 20px);
+    padding: clamp(15px, 2vw, 30px) clamp(10px, 1.5vw, 20px);
     border-left: 1px solid var(--glass);
     position: sticky;
     top: var(--header-height);
@@ -704,7 +562,7 @@ body.reduce-motion * {
 
 .video-okvir {
     width: 100%;
-    height: 450px; /* Fiksna visina za stabilan prikaz */
+    height: 450px;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
@@ -712,482 +570,161 @@ body.reduce-motion * {
     position: relative;
 }
 
-.lokalni-video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
+.lokalni-video { width: 100%; height: 100%; object-fit: cover; }
+.trailer-naslov { color: #e50914; margin-bottom: 15px; }
+.trailer-opis { margin-top: 10px; font-size: 0.9rem; color: #a0a0a0; }
 
-.video-kontejner {
-    position: relative;
-    width: 100%;
-    height: var(--video-visina);
-    overflow: hidden;
-    /* Flexbox za centriranje teksta preko videa */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.pozadinski-video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -1; /* Video ide u pozadinu */
-    transform: translate(-50%, -50%);
-    object-fit: cover; /* Osigurava da video popuni prostor bez razvlačenja */
-}
-
-/* Osiguraj da kontejner preko videa ne bude preširok na desktopu */
-.sadrzaj-preko-videa {
-    max-width: 80%;       /* Da ne ide od ruba do ruba */
-    z-index: 10;          /* Mora biti veći od videa (-1) */
-}
-
-.trailer-naslov {
-    color: #e50914;
-    margin-bottom: 15px;
-}
-
-.trailer-opis {
-    margin-top: 10px;
-    font-size: 0.9rem;
-    color: #a0a0a0;
-}
-
-/* -------------- */
 /* --- FOOTER --- */
-/* -------------- */
 footer {
     text-align: center;
     padding: 40px;
-    background: rgba(10, 10, 10, 0.95); /* footer ostaje na dark mode */
+    background: rgba(10, 10, 10, 0.95);
     border-top: 1px solid var(--glass);
 }
+footer p { color: white; }
+.footer-glavni { text-align: center; padding: 20px; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 20px; }
+.footer-autori { font-size: 0.8rem; color: #666; }
+.icon { width: 30px; height: 30px; margin: 0 5px; transition: 0.3s; align-items: baseline; }
 
-footer p {
-    color: white; /* footer ostaje na dark mode */
-}
-
-.footer-glavni {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    margin-top: 20px;
-}
-
-.footer-autori {
-    font-size: 0.8rem;
-    color: #666;
-}
-
-.icon {
-    width: 30px;
-    height: 30px;
-    margin: 0 5px;
-    transition: 0.3s;
-    align-items: baseline;
-}
-
-/* ----------------- */
 /* --- RECENZIJE --- */
-/* ----------------- */
-.hidden {
-    display: none;
-}
+.hidden { display: none; }
+#recenzije { width: 100%; padding: 40px; }
+.film-recenzija { max-width: 900px; margin: 0 auto; }
+.film-recenzija img { display: block; width: 100%; max-width: 500px; height: auto; margin: 0 auto 25px auto; border-radius: 15px; object-fit: cover; }
+.film-recenzija h1 { margin-bottom: 20px; font-size: 2.5rem; }
+.film-recenzija p { margin-bottom: 15px; line-height: 1.8; color: var(--text-muted); }
+.nazad-btn { margin-bottom: 30px; }
 
-#recenzije {
-    width: 100%;
-    padding: 40px;
-}
-
-.film-recenzija {
-    max-width: 900px;
-    margin: 0 auto;
-}
-
-.film-recenzija img {
-    display: block;
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-
-    margin: 0 auto 25px auto;
-
-    border-radius: 15px;
-    object-fit: cover;
-}
-
-.film-recenzija h1 {
-    margin-bottom: 20px;
-    font-size: 2.5rem;
-}
-
-.film-recenzija p {
-    margin-bottom: 15px;
-    line-height: 1.8;
-    color: var(--text-muted);
-}
-
-.nazad-btn {
-    margin-bottom: 30px;
-}
-
-/* --- STIL ZA COUNTDOWN TAJMER --- */
-/* Kod generisan uz Gemini AI, ali je razumljivo jer je repeticija prethodno naučenih stilova. */
+/* =========================================================================
+     AI BLOK (4/5): STILIZIRANJE COUNTDOWN TAJMERA ZA "THE AMAZING DIGITAL CIRCUS"
+     Ovaj blok vizuelno izdvaja brojač dana/sati do premijere filma.
+     ========================================================================= */
 .tajmer-kontejner {
-    background: var(--glass);
-    border: 1px dashed rgba(229, 9, 20, 0.4);
-    border-radius: 8px;
-    padding: 10px;
-    margin: 15px 0;
-    text-align: center;
+    background: var(--glass);                     /* Postavlja blago providnu pozadinu definisanu kroz staklo varijablu */
+    border: 1px dashed rgba(229, 9, 20, 0.4);     /* Pravi isprekidanu (dashed) crvenu liniju debljine 1 piksel oko tajmera */
+    border-radius: 8px;                           /* Zaobljuje uglove kutije tajmera za 8 piksela */
+    padding: 10px;                                /* Pravi unutrašnji razmak od 10px sa svih strana kako tekst ne bi udarao u ivice */
+    margin: 15px 0;                               /* Odmiče kompletan tajmer za 15px od gornjih i donjih elemenata u kartici */
+    text-align: center;                           /* Centrirat će sav tekst (naslov i cifre sata) strogo u sredinu kutije */
 }
 
 .tajmer-naslov-film {
-    font-size: 0.8rem !important;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    color: var(--text-muted);
-    margin-bottom: 3px;
+    font-size: 0.8rem !important;                 /* Smanjuje tekst naslova "U kinima za:" na suptilnih 0.8rem */
+    text-transform: uppercase;                    /* Pretvara sva slova naslova automatski u velika štampana slova */
+    letter-spacing: 1px;                          /* Širi razmak između slova natpisa za 1px radi bolje čitljivosti */
+    color: var(--text-muted);                     /* Boji tekst u prigušenu sivu boju */
+    margin-bottom: 3px;                           /* Pravi minimalni razmak od 3 piksela između naslova i samih brojeva sata */
 }
 
 .countdown-sat {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: var(--gold);
-    font-family: monospace; /* Različiti font za tajmer, da se istakne */
+    font-size: 1.1rem;                            /* Povećava brojeve tajmera kako bi odmah upali u oči posjetiocu */
+    font-weight: 700;                             /* Jako podebljava cifre sata (Bold) */
+    color: var(--gold);                           /* Boji brojeve u prepoznatljivu zlatnu boju iz varijable */
+    font-family: monospace;                       /* Ključno: postavlja font fiksne širine tako da se cifre ne pomjeraju lijevo-desno dok sekunde kucaju */
 }
+/* =========================================================================
+     KRAJ AI BLOKA ZA TAJMER
+     ========================================================================= */
 
-/* Ovu animaciju generisao je Gemini AI, primjenjuje se na kartice filmova kako bi se postigao efekt */
-/* pojavljivanja i blagog podizanja prilikom učitavanja stranice. */
+
+/* =========================================================================
+     AI BLOK (5/5): KLJUČNE ANIMACIJE (@KEYFRAMES) ZA UKCAVANJE FILMSKIH KARTICA
+     Ovaj blok implementira glatki vizuelni efekat prilikom prvog učitavanja stranice.
+     ========================================================================= */
 @keyframes prikaziKarticu {
     from { 
-        opacity: 0;
-        transform: translateY(20px); 
+        opacity: 0;                               /* Početno stanje: kartica je potpuno nevidljiva (prozirna) */
+        transform: translateY(20px);              /* Kartica je gurnuta 20 piksela naniže u odnosu na svoju pravu poziciju */
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+        opacity: 1;                               /* Krajnje stanje: kartica postaje 100% vidljiva i jasna */
+        transform: translateY(0);                 /* Vraća se na svoju tačnu originalnu visinu, kreirajući efekat podizanja */
     }
 }
+/* =========================================================================
+     KRAJ AI BLOKA ZA ANIMACIJU
+     ========================================================================= */
 
 
 /* --------------------- */
 /* --- RESPONZIVNOST --- */
 /* --------------------- */
 
-/* Provjerene standardne veličine break-pointova, prilagođene za različite uređaje kroz eksperimente */
-
 /* Manji desktopi */
 @media (max-width: 1400px) {
-
-    :root {
-        --sidebar-width: 170px;
-        --aside-width: 260px;
-    }
-
-    header {
-        padding: 0 25px;
-    }
-
-    header nav ul {
-        gap: 18px;
-    }
-
-    .hero-slider {
-        height: 360px;
-    }
-
-    .slide-content h1 {
-        font-size: 2.3rem;
-    }
-
-    .video-okvir {
-        height: 350px;
-    }
-
-    .sadrzaj-filmova {
-        grid-template-columns:
-            repeat(auto-fill, minmax(240px, 1fr));
-
-        padding: 30px;
-        gap: 20px;
-    }
+    :root { --sidebar-width: 170px; --aside-width: 260px; }
+    header { padding: 0 25px; }
+    header nav ul { gap: 18px; }
+    .hero-slider { height: 360px; }
+    .slide-content h1 { font-size: 2.3rem; }
+    .video-okvir { height: 350px; }
+    .sadrzaj-filmova { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); padding: 30px; gap: 20px; }
 }
-
-
 
 /* Laptopi */
 @media (max-width: 1200px) {
-
-    :root {
-        --sidebar-width: 150px;
-        --aside-width: 220px;
-    }
-
-    header nav ul {
-        gap: 14px;
-    }
-
-    header nav ul li a {
-        font-size: 0.9rem;
-    }
-
-    .slide-content h1 {
-        font-size: 2rem;
-    }
-
-    .slide-content p {
-        font-size: 1rem;
-    }
-
-    .hero-slider {
-        height: 320px;
-    }
-
-    .video-okvir {
-        height: 300px;
-    }
-
-    .sadrzaj-filmova {
-        grid-template-columns:
-            repeat(auto-fill, minmax(220px, 1fr));
-    }
-
-    .film-recenzija img {
-        max-width: 100%;
-    }
+    :root { --sidebar-width: 150px; --aside-width: 220px; }
+    header nav ul { gap: 14px; }
+    header nav ul li a { font-size: 0.9rem; }
+    .slide-content h1 { font-size: 2rem; }
+    .slide-content p { font-size: 1rem; }
+    .hero-slider { height: 320px; }
+    .video-okvir { height: 300px; }
+    .sadrzaj-filmova { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+    .film-recenzija img { max-width: 100%; }
 }
-
-
 
 /* Tableti landscape */
 @media (max-width: 992px) {
-
-    .glavni-kontejner {
-        grid-template-columns: 180px 1fr;
-    }
-    
-    .sadrzaj-filmova {
-        grid-template-columns:
-            repeat(auto-fill, minmax(220px, 1fr));
-
-        padding: 25px;
-    }
-
-    .hero-slider {
-        height: 280px;
-    }
-
-    .slide-content h1 {
-        font-size: 1.8rem;
-    }
-
-    .film-recenzija img {
-        max-width: 100%;
-    }
+    .glavni-kontejner { grid-template-columns: 180px 1fr; }
+    .sadrzaj-filmova { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); padding: 25px; }
+    .hero-slider { height: 280px; }
+    .slide-content h1 { font-size: 1.8rem; }
+    .film-recenzija img { max-width: 100%; }
 }
-
-
 
 /* Tableti portrait */
 @media (max-width: 768px) {
-
-    /* HEADER */
-
-    header {
-        height: auto;
-        flex-direction: column;
-        align-items: center;
-        padding: 15px;
-        gap: 15px;
-    }
-
-    /* NAVIGACIJA */
-
-    header nav ul {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    header nav ul li a {
-        font-size: 0.8rem;
-        white-space: nowrap;
-    }
-
-    /* GRID */
-
-    .glavni-kontejner {
-        grid-template-columns: 1fr;
-        margin-top: 120px;
-    }
-
-    /* LIJEVI SIDEBAR */
-
-    .lijevi-sidebar {
-        position: static;
-        height: auto;
-
-        border-right: none;
-        border-bottom: 1px solid var(--glass);
-    }
-
-    .lijevi-sidebar ul {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    /* HERO */
-
-    .hero-slider {
-        height: 250px;
-    }
-
-    .slide-content {
-        left: 20px;
-        bottom: 20px;
-        max-width: 90%;
-    }
-
-    .slide-content h1 {
-        font-size: 1.5rem;
-    }
-
-    .slide-content p {
-        font-size: 0.9rem;
-    }
-
-    /* FILMOVI */
-
-    .sadrzaj-filmova {
-        grid-template-columns: 1fr;
-        padding: 20px;
-    }
-
-    /* ACCESSIBILITY */
-
-    .accessibility-panel {
-        right: 15px;
-        left: 15px;
-        width: auto;
-    }
-
-    /* DESNI SIDEBAR NESTAJE */
-    .desni-sidebar {
-        display: none;
-    }
-
-    .glavni-kontejner {
-        display: block;
-        width: 100%;
-        overflow-x: hidden;
-    }
-    
-    .kontakt-sadrzaj {
-        width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
-        padding: 10px;
-    }
-
-    .kontakt-sekcija {
-        padding: 20px 15px;
-        width: 100%;
-        max-width: 100%;
-    }
+    header { height: auto; flex-direction: column; align-items: center; padding: 15px; gap: 15px; }
+    header nav ul { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+    header nav ul li a { font-size: 0.8rem; white-space: nowrap; }
+    .glavni-kontejner { grid-template-columns: 1fr; margin-top: 120px; }
+    .lijevi-sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--glass); }
+    .lijevi-sidebar ul { flex-direction: row; flex-wrap: wrap; justify-content: center; }
+    .hero-slider { height: 250px; }
+    .slide-content { left: 20px; bottom: 20px; max-width: 90%; }
+    .slide-content h1 { font-size: 1.5rem; }
+    .slide-content p { font-size: 0.9rem; }
+    .sadrzaj-filmova { grid-template-columns: 1fr; padding: 20px; }
+    .accessibility-panel { right: 15px; left: 15px; width: auto; }
+    .desni-sidebar { display: none; }
+    .glavni-kontejner { display: block; width: 100%; overflow-x: hidden; }
+    .kontakt-sadrzaj { width: 100%; max-width: 100%; overflow-x: hidden; padding: 10px; }
+    .kontakt-sekcija { padding: 20px 15px; width: 100%; max-width: 100%; }
 }
-
-
 
 /* Telefoni */
 @media (max-width: 576px) {
-
-    header {
-        padding: 12px;
-    }
-
-    .logo-slika {
-        max-height: 45px;
-    }
-
-    header nav ul {
-        gap: 6px;
-    }
-
-    header nav ul li a {
-        font-size: 0.7rem;
-    }
-
-    .hero-slider {
-        height: 200px;
-    }
-
-    .slide-content h1 {
-        font-size: 1.2rem;
-    }
-
-    .slide-content p {
-        font-size: 0.8rem;
-    }
-
-    .film-kartica .info {
-        padding: 15px;
-    }
-
-    .film-kartica h3 {
-        font-size: 1rem;
-    }
-
-    .film-kartica p {
-        font-size: 0.8rem;
-    }
-
-    .detalji-btn {
-        padding: 10px;
-        font-size: 0.85rem;
-    }
-
-    .sadrzaj-filmova {
-        padding: 10px;
-        gap: 15px;
-    }
-
-    .film-recenzija img {
-        border-radius: 10px;
-    }
+    header { padding: 12px; }
+    .logo-slika { max-height: 45px; }
+    header nav ul { gap: 6px; }
+    header nav ul li a { font-size: 0.7rem; }
+    .hero-slider { height: 200px; }
+    .slide-content h1 { font-size: 1.2rem; }
+    .slide-content p { font-size: 0.8rem; }
+    .film-kartica .info { padding: 15px; }
+    .film-kartica h3 { font-size: 1rem; }
+    .film-kartica p { font-size: 0.8rem; }
+    .detalji-btn { padding: 10px; font-size: 0.85rem; }
+    .sadrzaj-filmova { padding: 10px; gap: 15px; }
+    .film-recenzija img { border-radius: 10px; }
 }
-
 
 /* Mali telefoni */
 @media (max-width: 400px) {
-
-    header nav ul li a {
-        font-size: 0.65rem;
-    }
-
-    .slide-content h1 {
-        font-size: 1rem;
-    }
-
-    .slide-content p {
-        font-size: 0.75rem;
-    }
-
-    .hero-slider {
-        height: 170px;
-    }
-
-    .nav-btn {
-        width: 38px;
-        height: 38px;
-        font-size: 1.4rem;
-    }
+    header nav ul li a { font-size: 0.65rem; }
+    .slide-content h1 { font-size: 1rem; }
+    .slide-content p { font-size: 0.75rem; }
+    .hero-slider { height: 170px; }
+    .nav-btn { width: 38px; height: 38px; font-size: 1.4rem; }
 }
