@@ -1,8 +1,11 @@
 # Grupa14-TPTP-2026
 
 Završni projekat iz predmeta TPTP Fakulteta elektrotehnike u Tuzli.
+
 Naziv projekta: CineGuide
-Tema: Platforma za recenzije aktuelnih filmova u lokalnim kinima 
+
+Tema: Platforma za recenzije aktuelnih filmova u lokalnim kinima
+
 Projekat predstavlja modernu web lokaciju za pregled filmskih recenzija, preporuka i multimedijalnog sadržaja. Fokus projekta je na responzivnom dizajnu, interaktivnosti i modernom korisničkom iskustvu koristeći HTML5, CSS3 i JavaScript bez frameworka.
 
 # Članovi grupe:
