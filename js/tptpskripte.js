@@ -783,4 +783,73 @@ window.addEventListener("resize", () => {
 
 });
 
+    // SMOOTH SCROLL
+    // Ovaj blok koda generisao je Gemini AI.
+
+    // Selektujemo linkove iz sidebara i dugme "Nazad na vrh"
+    const brzaNavigacijaLinkovi = document.querySelectorAll(".lijevi-sidebar ul li a[href^='#'], a[href='#vrh']");
+
+    brzaNavigacijaLinkovi.forEach(link => { // Dodajemo event listener za klik na svaki link
+        link.addEventListener("click", (e) => { // Kada se klikne na link
+            // Sprečavamo instant skok pretraživača
+            e.preventDefault();
+
+            // Uzimamo id sekcije (npr. "#tabela")
+            const ciljaniId = link.getAttribute("href");
+            
+            if (ciljaniId === "#") return; // Ako je href samo "#", ne radimo ništa
+
+            const ciljanaSekcija = document.querySelector(ciljaniId);
+
+            if (ciljanaSekcija) { // Ako sekcija postoji, proračunavamo poziciju do koje treba skrolovati
+                const visinaHeadera = 80; 
+                const pozicijaSekcije = ciljanaSekcija.getBoundingClientRect().top + window.scrollY;
+                const konacnaPozicija = pozicijaSekcije - visinaHeadera - 10; 
+
+                // Glatko skrolovanje do proračunate pozicije
+                window.scrollTo({
+                    top: konacnaPozicija,
+                    behavior: "smooth"
+                });
+            }
+        });
+    });
+
+    // COUNTDOWN
+    // Kod iz online tutoriala, prilagođen sa Gemini.
+
+    const tajmerElement = document.getElementById("countdown-tadc");
+
+    if (tajmerElement) {
+        // Postavljamo datum premijere: 4. Juni 2026. u 00:00:00 sati
+        const datumPremijere = new Date("June 4, 2026 00:00:00").getTime();
+
+        // Osvježavamo tajmer svake sekunde (1000 milisekundi)
+        const intervalTajmera = setInterval(() => {
+
+            // Uzimamo trenutno vrijeme u momentu izvršavanja
+            const sada = new Date().getTime();
+
+            // Računamo razliku između premijere i trenutnog vremena
+            const razlika = datumPremijere - sada;
+
+            // Matematički proračun za dane, sate, minute i sekunde
+            const dani = Math.floor(razlika / (1000 * 60 * 60 * 24));
+            const sati = Math.floor((razlika % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minuti = Math.floor((razlika % (1000 * 60 * 60)) / (1000 * 60));
+            const sekunde = Math.floor((razlika % (1000 * 60)) / 1000);
+
+            // Ispisujemo rezultat u naš HTML element
+            tajmerElement.innerHTML = `${dani}d ${sati}h ${minuti}m ${sekunde}s`;
+
+            // Ako je odbrojavanje završeno, ispiši poruku i zaustavi tajmer
+            if (razlika < 0) {
+                clearInterval(intervalTajmera);
+                tajmerElement.innerHTML = "NOVO U KINIMA!";
+                tajmerElement.style.color = "var(--primary)";
+            }
+
+        }, 1000);
+    }
+
 });
