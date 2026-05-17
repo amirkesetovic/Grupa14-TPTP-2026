@@ -91,101 +91,77 @@
                     ili prijaviti problem na stranici? Javite nam se putem forme ispod.
                 </p>
 
-                
-                <form id="kontakt-forma">
-
-                    
+                <form id="kontakt-forma" novalidate> 
                     <div class="forma-grupa">
                         <label for="ime">Ime</label>
                         <input type="text" id="ime" class="unos-polje" name="ime" 
-                        placeholder="Unesite vaše ime" autocomplete="given-name">
+                               placeholder="Unesite vaše ime" autocomplete="given-name" required maxlength="30">
                         <span class="greska" id="ime-greska"></span>
                     </div>
                     
                     <div class="forma-grupa">
                         <label for="prezime">Prezime</label>
-                        <input type="text" id="prezime"class="unos-polje"  name="prezime" 
-                        placeholder="Unesite vaše prezime" autocomplete="family-name">
+                        <input type="text" id="prezime" class="unos-polje" name="prezime" 
+                               placeholder="Unesite vaše prezime" autocomplete="family-name" required maxlength="30">
                         <span class="greska" id="prezime-greska"></span>
                     </div>
 
                     <div class="forma-grupa">
                         <label for="email">Email adresa</label>
-                        <input type="text" id="email" class="unos-polje" name="email" 
-                        placeholder="example@gmail.com" autocomplete="email">
+                        <input type="email" id="email" class="unos-polje" name="email" 
+                               placeholder="example@gmail.com" autocomplete="email" required>
                         <span class="greska" id="email-greska"></span>
                     </div>
                     
                     <div class="forma-grupa">
                         <label for="telefon">Broj telefona</label>
-                        <input type="text" id="telefon" class="unos-polje" name="telefon"  
-                        placeholder="+387 61 123 456" autocomplete="tel">
+                        <input type="tel" id="telefon" class="unos-polje" name="telefon"  
+                               placeholder="+387 61 123 456" autocomplete="tel" required>
                         <span class="greska" id="telefon-greska"></span>
                     </div>
 
                     <div class="forma-grupa">
                         <label for="tema">Tema upita</label>
-                        <select id="tema" name="tema" class="unos-polje">
-
+                        <select id="tema" name="tema" class="unos-polje" required>
                             <option value="">Odaberite temu</option>
-                            <option value="preporuka">
-                                Preporuka filma
-                            </option>
-
-                            <option value="recenzija">
-                                Slanje recenzije
-                            </option>
-
-                            <option value="problem">
-                                Prijava problema
-                            </option>
-
-                            <option value="saradnja">
-                                Saradnja
-                            </option>
-
-                            <option value="ostalo">
-                                Ostalo
-                            </option>
-
+                            <option value="preporuka">Preporuka filma</option>
+                            <option value="recenzija">Slanje recenzije</option>
+                            <option value="problem">Prijava problema</option>
+                            <option value="saradnja">Saradnja</option>
+                            <option value="ostalo">Ostalo</option>
                         </select>
-
                         <span class="greska" id="tema-greska"></span>
                     </div>
 
                     <div class="forma-grupa">
                         <label for="poruka">Vaša poruka</label>
-
-                        <textarea
-                            id="poruka" name="poruka" rows="7"
-                             placeholder="Napišite svoju recenziju, preporuku ili pitanje..."
-                        ></textarea>
-
+                        <textarea id="poruka" name="poruka" rows="7" 
+                                  placeholder="Napišite svoju recenziju, preporuku ili pitanje..." required minlength="10"></textarea>
                         <span class="greska" id="poruka-greska"></span>
                     </div>
 
+                    <div class="forma-grupa-checkbox">
+                        <input type="checkbox" id="pravila" name="pravila" required>
+                        <label for="pravila">Slažem se sa uslovima korištenja i obradom podataka</label>
+                        <span class="greska" id="pravila-greska"></span>
+                    </div>
+
                     <div class="dugmad-forme">
-                        <button type="submit" class="posalji-btn">
-                            Pošalji poruku
-                        </button>
-
-                        <button type="reset" class="reset-btn">
-                            Resetuj formu
-                        </button>
-
+                        <button type="submit" class="posalji-btn">Pošalji poruku</button>
+                        <button type="reset" class="reset-btn">Resetuj formu</button>
                     </div>
                 </form>
 
                 <div id="uspjesna-poruka"></div>
-                <section class="kontakt-info">
 
-    <h2>Kontakt informacije</h2>
-
-    <p>Email: info@cineguide.ba</p>
-    <p>Telefon: +387 61 123 456</p>
-    <p>Lokacija: Tuzla, Bosna i Hercegovina</p>
-                </section>
-        </main>
+            </section> 
+            <section class="kontakt-info">
+                <h2>Kontakt informacije</h2>
+                <p>Email: info@cineguide.ba</p>
+                <p>Telefon: +387 61 123 456</p>
+                <p>Lokacija: Tuzla, Bosna i Hercegovina</p>
+            </section>
+         </main>
 
         <aside class="desni-sidebar">
             <h3 class="kontakt-film-naslov">Film sedmice</h3>
