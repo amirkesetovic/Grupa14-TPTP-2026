@@ -1,8 +1,11 @@
 # Grupa14-TPTP-2026
 
 Završni projekat iz predmeta TPTP Fakulteta elektrotehnike u Tuzli.
+
 Naziv projekta: CineGuide
-Tema: Platforma za recenzije aktuelnih filmova u lokalnim kinima 
+
+Tema: Platforma za recenzije aktuelnih filmova u lokalnim kinima
+
 Projekat predstavlja modernu web lokaciju za pregled filmskih recenzija, preporuka i multimedijalnog sadržaja. Fokus projekta je na responzivnom dizajnu, interaktivnosti i modernom korisničkom iskustvu koristeći HTML5, CSS3 i JavaScript bez frameworka.
 
 # Članovi grupe:
@@ -10,7 +13,7 @@ Projekat predstavlja modernu web lokaciju za pregled filmskih recenzija, preporu
 | Član | Index | GitHub | Zadatak |
 |---|---|---|---|
 | Bulić Zara | 25134 | zarabulic | HTML |
-| Kavazović Amir | 25xxx | username | CSS |
+| Kavazović Amir | 25058 | amirkavazovic12 | CSS |
 | Kešetović Amir | 25006 | amirkesetovic | JavaScript |
 
 # Kratak opis projekta:
