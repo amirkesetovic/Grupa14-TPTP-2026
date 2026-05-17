@@ -43,14 +43,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const dotsContainer = document.querySelector(".dots");
 
     let currentIndex = 0;
+    let sliderTimer; // Varijabla koja će čuvati naš tajmer
+
+    // Za sljedeci fix timera potpomogao je Gemini AI,
+    // Funkcija modifikovana tako da se timer za slider
+    // Resetuje po kliku dugmadi za increment
 
     if (slides && slide.length > 0) {
 
-        // Sljedeći blok je napravljen pomoću ChatGPT-a. Za svaku sliku u slideru stvara tačku (dot)
-        // ispod slidera, i dodaje event listener koji omogućava korisniku da klikom na tačku promijeni sliku.
-        
+        // Kreiranje tačkica (dots) ispod slidera
         slide.forEach((_, index) => {
-
             const dot = document.createElement("div");
             dot.classList.add("dot");
 
@@ -59,74 +61,60 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             dot.addEventListener("click", () => {
-
                 currentIndex = index;
                 updateSlider();
-
+                autoSlider(); // Resetuje tajmer na klik tačkice
             });
 
             dotsContainer.appendChild(dot);
-
         });
 
         const dots = document.querySelectorAll(".dot");
 
-        // Sintaksa funkcije naučena od ChatGPT-a.
-        // Pozivom funkcije prvo pomjeramo slider uz pomoć slides.style.transform gdje
-        // `translateX(-${currentIndex * 100}%)` znači da se slider pomjera ulijevo za 100%
-        // širine po svakom indeksu. Zatim uklanjamo klasu "active" sa svih tačaka i
-        // dodajemo je samo onoj koja odgovara trenutnom indeksu.
-
+        // Funkcija za pomjeranje slidera i aktivaciju tačkica
         function updateSlider() {
-
-            slides.style.transform =
-                `translateX(-${currentIndex * 100}%)`;
-
-            dots.forEach(dot =>
-                dot.classList.remove("active")
-            );
-
+            slides.style.transform = `translateX(-${currentIndex * 100}%)`;
+            dots.forEach(dot => dot.classList.remove("active"));
             dots[currentIndex].classList.add("active");
-
         }
 
+        // Funkcija koja upravlja tajmerom (briše stari i pokreće novi)
+        function autoSlider() {
+            clearInterval(sliderTimer); // Čisti prethodni interval da se sekunde ne bi duplale
+            
+            sliderTimer = setInterval(() => {
+                currentIndex++;
+                if (currentIndex >= slide.length) {
+                    currentIndex = 0;
+                }
+                updateSlider();
+            }, 5000);
+        }
+
+        // Kontrola za NEXT dugme
         nextBtn.addEventListener("click", () => {
-
             currentIndex++;
-
             if (currentIndex >= slide.length) {
                 currentIndex = 0;
             }
-
             updateSlider();
-
+            autoSlider(); // Resetuje tajmer na klik za desno
         });
 
+        // Kontrola za PREV dugme
         prevBtn.addEventListener("click", () => {
-
             currentIndex--;
-
             if (currentIndex < 0) {
                 currentIndex = slide.length - 1;
             }
-
             updateSlider();
-
+            autoSlider(); // Resetuje tajmer na klik za lijevo
         });
 
-        setInterval(() => {
-
-            currentIndex++;
-
-            if (currentIndex >= slide.length) {
-                currentIndex = 0;
-            }
-
-            updateSlider();
-
-        }, 5000);
-
+        // Pokrećemo tajmer prvi put automatski čim se stranica učita
+        autoSlider();
     }
+    
     const filterLinkovi = document.querySelectorAll("[data-filter]");
     const filmKartice = document.querySelectorAll(".film-kartica");
 
