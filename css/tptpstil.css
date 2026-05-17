@@ -440,7 +440,6 @@ body.reduce-motion * {
     transition: 0.4s;
     display: flex;
     flex-direction: column;
-    animation: prikaziKarticu 0.6s ease-out forwards;
 }
 
 .film-kartica:hover {
@@ -850,18 +849,6 @@ footer p {
     font-family: monospace;
 }
 
-/* Ovu animaciju generisao je Gemini AI, primjenjuje se na kartice filmova kako bi se postigao efekt */
-/* pojavljivanja i blagog podizanja prilikom učitavanja stranice. */
-@keyframes prikaziKarticu {
-    from { 
-        opacity: 0;
-        transform: translateY(20px); 
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
 
 /* --------------------- */
 /* --- RESPONZIVNOST --- */
@@ -1148,6 +1135,7 @@ footer p {
         border-radius: 10px;
     }
 }
+
 
 /* Mali telefoni */
 @media (max-width: 400px) {
