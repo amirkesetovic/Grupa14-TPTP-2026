@@ -492,6 +492,7 @@ body.reduce-motion * {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    min-width: 0;
 }
 
 .film-tabela {
@@ -815,7 +816,7 @@ footer p {
 }
 
 .film-tabela {
-    min-width: 500px;
+    min-width: 600px;
 }
 
 /* --------------------- */
