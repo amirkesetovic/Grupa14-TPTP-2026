@@ -291,7 +291,7 @@ if (forma) {
         if (telefon.value.trim() === "") {
 
             telefonGreska.textContent =
-                "Telefon je obavezdan.";
+                "Telefon je obavezan.";
 
             validnaForma = false;
 
